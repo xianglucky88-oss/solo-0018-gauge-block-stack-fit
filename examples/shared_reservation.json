@@ -1,0 +1,162 @@
+{
+  "on": "2026-11-22",
+  "max_blocks": 4,
+  "first_task": {
+    "id": "T0",
+    "target_nm": 1000,
+    "tolerance_nm": 10
+  },
+  "branches": [
+    {
+      "id": "T1",
+      "target_nm": 800,
+      "tolerance_nm": 8
+    },
+    {
+      "id": "T2",
+      "target_nm": 300,
+      "tolerance_nm": 4
+    }
+  ],
+  "blocks": {
+    "A": {
+      "nominal_nm": 1000,
+      "certificates": [
+        {
+          "id": "cert-a",
+          "from": "2026-01-01",
+          "until": "2027-01-01",
+          "correction_nm": 2,
+          "uncertainty_nm": 3
+        }
+      ]
+    },
+    "B": {
+      "nominal_nm": 500,
+      "certificates": [
+        {
+          "id": "cert-b",
+          "from": "2026-01-01",
+          "until": "2027-01-01",
+          "correction_nm": 0,
+          "uncertainty_nm": 2
+        }
+      ]
+    },
+    "C": {
+      "nominal_nm": 300,
+      "certificates": [
+        {
+          "id": "cert-c",
+          "from": "2026-01-01",
+          "until": "2027-01-01",
+          "correction_nm": 1,
+          "uncertainty_nm": 1
+        }
+      ]
+    },
+    "D": {
+      "nominal_nm": 100,
+      "certificates": [
+        {
+          "id": "cert-d",
+          "from": "2026-01-01",
+          "until": "2027-01-01",
+          "correction_nm": 0,
+          "uncertainty_nm": 1
+        }
+      ]
+    },
+    "E": {
+      "nominal_nm": 200,
+      "certificates": [
+        {
+          "id": "cert-e",
+          "from": "2026-01-01",
+          "until": "2027-01-01",
+          "correction_nm": 0,
+          "uncertainty_nm": 1
+        }
+      ]
+    },
+    "F": {
+      "nominal_nm": 100,
+      "certificates": [
+        {
+          "id": "cert-f",
+          "from": "2026-01-01",
+          "until": "2027-01-01",
+          "correction_nm": 5,
+          "uncertainty_nm": 2
+        }
+      ]
+    },
+    "G": {
+      "nominal_nm": 1000,
+      "certificates": [
+        {
+          "id": "cert-g",
+          "from": "2026-01-01",
+          "until": "2027-01-01",
+          "correction_nm": -3,
+          "uncertainty_nm": 2
+        }
+      ]
+    },
+    "H": {
+      "nominal_nm": 250,
+      "certificates": [
+        {
+          "id": "cert-h-expired",
+          "from": "2025-01-01",
+          "until": "2026-11-01",
+          "correction_nm": 0,
+          "uncertainty_nm": 1
+        }
+      ]
+    },
+    "I": {
+      "nominal_nm": 250,
+      "certificates": [
+        {
+          "id": "cert-i-1",
+          "from": "2026-01-01",
+          "until": "2027-01-01",
+          "correction_nm": 0,
+          "uncertainty_nm": 1
+        },
+        {
+          "id": "cert-i-2",
+          "from": "2026-06-01",
+          "until": "2026-12-01",
+          "correction_nm": 0,
+          "uncertainty_nm": 1
+        }
+      ]
+    },
+    "J": {
+      "nominal_nm": 250,
+      "certificates": [
+        {
+          "id": "cert-j-future",
+          "from": "2026-12-01",
+          "until": "2027-12-01",
+          "correction_nm": 0,
+          "uncertainty_nm": 1
+        }
+      ]
+    },
+    "K": {
+      "nominal_nm": 200,
+      "certificates": [
+        {
+          "id": "cert-k",
+          "from": "2026-01-01",
+          "until": "2027-01-01",
+          "correction_nm": -1,
+          "uncertainty_nm": 1
+        }
+      ]
+    }
+  }
+}

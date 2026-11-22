@@ -17,6 +17,15 @@ curl --json @examples/demo.json http://127.0.0.1:8745/stackfit/conforming-stacks
 python3 -B -m gauge.example /stackfit/certificate-status
 python3 -B -m gauge.example /stackfit/stack-interval
 python3 -B -m gauge.example /stackfit/conforming-stacks
+python3 -B -m gauge.example /stackfit/reuse-decision --input examples/reuse-decision.json
 ```
 
-参见 [领域规则与接口](PROJECT_SPEC.md)。`examples/demo.json` 为完整合成输入；其他示例用于观察拒收或待核。业务单元测试留待后续，当前不假设联网、数据库或已有用户数据。
+参见 [领域规则与接口](PROJECT_SPEC.md)。`examples/demo.json` 为完整合成输入；`examples/reuse-decision.json` 演示改动目标后判定上一张推荐单能否沿用；其他示例用于观察拒收或待核。当前不假设联网、数据库或已有用户数据。
+
+## 测试
+
+复用资格的合同测试由可替换适配器（进程内与本机 HTTP 两个实现）驱动，覆盖继续沿用、必须重搜、旧卡证书不可用三条路径，并以真实新请求作为验收对照：
+
+```sh
+python3 -B -m unittest discover -s tests -t .
+```

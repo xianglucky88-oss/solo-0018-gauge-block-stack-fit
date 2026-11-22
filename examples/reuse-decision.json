@@ -1,0 +1,141 @@
+{
+  "previous": {
+    "request": {
+      "on": "2026-11-01",
+      "blocks": {
+        "A": {
+          "nominal_nm": 1000000,
+          "certificates": [
+            {
+              "id": "c-a",
+              "from": "2026-01-01",
+              "until": "2027-01-01",
+              "correction_nm": 3,
+              "uncertainty_nm": 5
+            }
+          ]
+        },
+        "B": {
+          "nominal_nm": 400000,
+          "certificates": [
+            {
+              "id": "c-b",
+              "from": "2026-01-01",
+              "until": "2027-01-01",
+              "correction_nm": 2,
+              "uncertainty_nm": 2
+            }
+          ]
+        },
+        "C": {
+          "nominal_nm": 600000,
+          "certificates": [
+            {
+              "id": "c-c",
+              "from": "2026-01-01",
+              "until": "2027-01-01",
+              "correction_nm": -1,
+              "uncertainty_nm": 2
+            }
+          ]
+        },
+        "D": {
+          "nominal_nm": 1000000,
+          "certificates": [
+            {
+              "id": "c-d",
+              "from": "2026-01-01",
+              "until": "2027-01-01",
+              "correction_nm": 0,
+              "uncertainty_nm": 50
+            }
+          ]
+        }
+      },
+      "target_nm": 1000000,
+      "tolerance_nm": 12,
+      "max_blocks": 2,
+      "rank": "margin"
+    },
+    "sheet": {
+      "state": "matched",
+      "feasible_count": 2,
+      "recommendation": {
+        "blocks": [
+          "B",
+          "C"
+        ],
+        "center_nm": 1000001,
+        "bounds_nm": [
+          999997,
+          1000005
+        ],
+        "state": "within",
+        "margin_nm": 7,
+        "evidence": {
+          "B": "c-b",
+          "C": "c-c"
+        }
+      },
+      "unusable": {},
+      "rank": "margin"
+    }
+  },
+  "request": {
+    "on": "2026-11-01",
+    "blocks": {
+      "A": {
+        "nominal_nm": 1000000,
+        "certificates": [
+          {
+            "id": "c-a",
+            "from": "2026-01-01",
+            "until": "2027-01-01",
+            "correction_nm": 3,
+            "uncertainty_nm": 5
+          }
+        ]
+      },
+      "B": {
+        "nominal_nm": 400000,
+        "certificates": [
+          {
+            "id": "c-b",
+            "from": "2026-01-01",
+            "until": "2027-01-01",
+            "correction_nm": 2,
+            "uncertainty_nm": 2
+          }
+        ]
+      },
+      "C": {
+        "nominal_nm": 600000,
+        "certificates": [
+          {
+            "id": "c-c",
+            "from": "2026-01-01",
+            "until": "2027-01-01",
+            "correction_nm": -1,
+            "uncertainty_nm": 2
+          }
+        ]
+      },
+      "D": {
+        "nominal_nm": 1000000,
+        "certificates": [
+          {
+            "id": "c-d",
+            "from": "2026-01-01",
+            "until": "2027-01-01",
+            "correction_nm": 0,
+            "uncertainty_nm": 50
+          }
+        ]
+      }
+    },
+    "target_nm": 1000002,
+    "tolerance_nm": 12,
+    "max_blocks": 2,
+    "rank": "margin"
+  }
+}

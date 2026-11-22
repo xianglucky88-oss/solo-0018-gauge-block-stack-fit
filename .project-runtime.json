@@ -1,0 +1,23 @@
+{
+  "language": "Python 3.11+ (stdlib)",
+  "project_shape": "backend",
+  "source_extensions": [
+    ".py"
+  ],
+  "build_command": "python3 -B -c \"from pathlib import Path; [compile(p.read_bytes(), str(p), 'exec') for p in Path('gauge').glob('*.py')]\"",
+  "testing": "deferred",
+  "workflow_checks": [
+    {
+      "workflow_id": "certificate-status",
+      "command": "python3 -B -m gauge.example /stackfit/certificate-status"
+    },
+    {
+      "workflow_id": "stack-interval",
+      "command": "python3 -B -m gauge.example /stackfit/stack-interval"
+    },
+    {
+      "workflow_id": "conforming-stacks",
+      "command": "python3 -B -m gauge.example /stackfit/conforming-stacks"
+    }
+  ]
+}

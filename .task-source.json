@@ -1,0 +1,211 @@
+{
+  "task_source_schema_version": 1,
+  "cc_feedback_profile": "cc-feedback-2611",
+  "project_domain": "数据工程",
+  "project_subdirection": "其他",
+  "supported_task_types": [
+    "功能开发",
+    "功能优化",
+    "质量保障",
+    "技术讨论",
+    "问题排查与诊断"
+  ],
+  "type_coverage": {
+    "功能开发": {
+      "status": "supported",
+      "reason": "同批系统误差约束可由现有业务规则衍生为独立新交付，未在基线实现。",
+      "source_anchors": [
+        "gauge/certificates.py",
+        "gauge/example.py",
+        "gauge/fit.py",
+        "gauge/http_api.py",
+        "gauge/search.py"
+      ]
+    },
+    "功能优化": {
+      "status": "supported",
+      "reason": "套件共享分配有现有计算与输出作为行为调整入口，未计作正式候选。",
+      "source_anchors": [
+        "gauge/certificates.py",
+        "gauge/example.py",
+        "gauge/fit.py",
+        "gauge/http_api.py",
+        "gauge/search.py"
+      ]
+    },
+    "质量保障": {
+      "status": "supported",
+      "reason": "按指定优先级推荐可重现的组合；可基于真实入口构建输入对照验证。",
+      "source_anchors": [
+        "gauge/certificates.py",
+        "gauge/example.py",
+        "gauge/fit.py",
+        "gauge/http_api.py",
+        "gauge/search.py"
+      ]
+    },
+    "技术讨论": {
+      "status": "supported",
+      "reason": "可围绕 将绝对不确定半径相加，不假设独立误差。只部分相交不合规。 比较基线允许的不同表达方式和结果。",
+      "source_anchors": [
+        "gauge/certificates.py",
+        "gauge/example.py",
+        "gauge/fit.py",
+        "gauge/http_api.py",
+        "gauge/search.py"
+      ]
+    },
+    "问题排查与诊断": {
+      "status": "supported",
+      "reason": "从合成请求输入追踪 只有部分相交的组合不进入可行集 的证据，不假造缺陷。",
+      "source_anchors": [
+        "gauge/certificates.py",
+        "gauge/example.py",
+        "gauge/fit.py",
+        "gauge/http_api.py",
+        "gauge/search.py"
+      ]
+    },
+    "Bugfix": {
+      "status": "no_verified_defect",
+      "reason": "未确认可复现缺陷；不预埋缺陷。"
+    },
+    "代码重构": {
+      "status": "unsupported",
+      "reason": "尚未实证独立困难重构空间，先保留当前领域职责。"
+    },
+    "依赖升级与迁移": {
+      "status": "unsupported",
+      "reason": "无第三方依赖或已核实的迁移目标。"
+    },
+    "项目维护": {
+      "status": "unsupported",
+      "reason": "尚无版本维护流程或交付证据。"
+    },
+    "部署运维": {
+      "status": "unsupported",
+      "reason": "仅本地无状态演示，没有部署恢复契约。"
+    },
+    "泛Agent需求": {
+      "status": "unsupported",
+      "reason": "暂无外部真实工作流输入及交付约束。"
+    }
+  },
+  "prompt_contract": {
+    "schema_version": 1,
+    "mode": "baseline-only",
+    "generation_scope": {
+      "mode": "all_supported"
+    },
+    "planning_only": true,
+    "minimum_active_prompts": {
+      "功能开发": 20,
+      "功能优化": 20,
+      "质量保障": 2,
+      "技术讨论": 2,
+      "问题排查与诊断": 2
+    }
+  },
+  "entities": [
+    {
+      "id": "block",
+      "label": "量块"
+    },
+    {
+      "id": "certificate",
+      "label": "校准证书"
+    },
+    {
+      "id": "correction",
+      "label": "块长校正值"
+    },
+    {
+      "id": "uncertainty",
+      "label": "保守半径"
+    },
+    {
+      "id": "target",
+      "label": "用途公差"
+    },
+    {
+      "id": "stack",
+      "label": "组合"
+    },
+    {
+      "id": "recommendation",
+      "label": "推荐组合"
+    }
+  ],
+  "state_machines": [
+    {
+      "subject": "recommendation",
+      "states": [
+        "matched",
+        "no_conforming_stack"
+      ],
+      "transitions": [],
+      "kind": "derived outcomes per full input; not a persisted lifecycle"
+    }
+  ],
+  "capability_families": [
+    {
+      "family": "有效证书解析",
+      "occupied_by": [
+        "search.available"
+      ],
+      "available": true
+    },
+    {
+      "family": "指定组合判断",
+      "occupied_by": [
+        "fit.check"
+      ],
+      "available": true
+    },
+    {
+      "family": "合规组合搜索",
+      "occupied_by": [
+        "search.recommend"
+      ],
+      "available": true
+    }
+  ],
+  "tension_points": [
+    {
+      "workflow_id": "certificate-status",
+      "description": "按日期给校正值和不可用原因，同时保留反例证据。",
+      "observable_failure": "多张证书重叠时不猜版本"
+    },
+    {
+      "workflow_id": "stack-interval",
+      "description": "保守累加不确定度并区分完全落入和部分相交，同时保留反例证据。",
+      "observable_failure": "同一块禁止重复使用"
+    },
+    {
+      "workflow_id": "conforming-stacks",
+      "description": "按指定优先级推荐可重现的组合，同时保留反例证据。",
+      "observable_failure": "只有部分相交的组合不进入可行集"
+    }
+  ],
+  "extension_seams": [
+    {
+      "id": "product-output-certificate-status",
+      "anchor": "gauge/search.py:available",
+      "entry": "POST /stackfit/certificate-status",
+      "distinct_outcome": "按日期给校正值和不可用原因"
+    },
+    {
+      "id": "product-output-stack-interval",
+      "anchor": "gauge/fit.py:check",
+      "entry": "POST /stackfit/stack-interval",
+      "distinct_outcome": "保守累加不确定度并区分完全落入和部分相交"
+    },
+    {
+      "id": "product-output-conforming-stacks",
+      "anchor": "gauge/search.py:recommend",
+      "entry": "POST /stackfit/conforming-stacks",
+      "distinct_outcome": "按指定优先级推荐可重现的组合"
+    }
+  ],
+  "prompt_anchors": []
+}

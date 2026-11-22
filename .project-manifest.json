@@ -1,0 +1,100 @@
+{
+  "project_shape": "backend",
+  "modules": [
+    {
+      "id": "certificates",
+      "path": "gauge/certificates.py",
+      "responsibility": "Resolve usable correction and uncertainty for a synthetic gauge block."
+    },
+    {
+      "id": "example",
+      "path": "gauge/example.py",
+      "responsibility": "Send the bundled synthetic input to an ephemeral local HTTP service."
+    },
+    {
+      "id": "fit",
+      "path": "gauge/fit.py",
+      "responsibility": "Evaluate stack intervals without assuming independent block errors."
+    },
+    {
+      "id": "http_api",
+      "path": "gauge/http_api.py",
+      "responsibility": "Local JSON transport for 量块组合公差计算; only loopback is exposed."
+    },
+    {
+      "id": "search",
+      "path": "gauge/search.py",
+      "responsibility": "Enumerate bounded combinations and rank only fully conforming stacks."
+    },
+    {
+      "id": "http_api",
+      "path": "gauge/http_api.py",
+      "responsibility": "Local JSON transport for 量块组合公差计算; only loopback is exposed."
+    },
+    {
+      "id": "example",
+      "path": "gauge/example.py",
+      "responsibility": "Send the bundled synthetic input to an ephemeral local HTTP service."
+    }
+  ],
+  "workflows": [
+    {
+      "id": "certificate-status",
+      "name": "有效证书解析",
+      "entry": "POST /stackfit/certificate-status",
+      "success": "按日期给校正值和不可用原因",
+      "failure": "多张证书重叠时不猜版本",
+      "verification": "python3 -B -m gauge.example /stackfit/certificate-status",
+      "module_ids": [
+        "certificates",
+        "search",
+        "http_api"
+      ],
+      "steps": [
+        "解析项目专用输入并验证前置条件",
+        "按日期给校正值和不可用原因"
+      ]
+    },
+    {
+      "id": "stack-interval",
+      "name": "指定组合判断",
+      "entry": "POST /stackfit/stack-interval",
+      "success": "保守累加不确定度并区分完全落入和部分相交",
+      "failure": "同一块禁止重复使用",
+      "verification": "python3 -B -m gauge.example /stackfit/stack-interval",
+      "module_ids": [
+        "certificates",
+        "fit",
+        "http_api"
+      ],
+      "steps": [
+        "解析项目专用输入并验证前置条件",
+        "保守累加不确定度并区分完全落入和部分相交"
+      ]
+    },
+    {
+      "id": "conforming-stacks",
+      "name": "合规组合搜索",
+      "entry": "POST /stackfit/conforming-stacks",
+      "success": "按指定优先级推荐可重现的组合",
+      "failure": "只有部分相交的组合不进入可行集",
+      "verification": "python3 -B -m gauge.example /stackfit/conforming-stacks",
+      "module_ids": [
+        "certificates",
+        "fit",
+        "search"
+      ],
+      "steps": [
+        "解析项目专用输入并验证前置条件",
+        "按指定优先级推荐可重现的组合"
+      ]
+    }
+  ],
+  "complexity": {
+    "mechanisms": [
+      "长度为整数纳米。证书有效区间左闭右开，多张同时有效时量块不可用；不以名义值代替缺失证书。",
+      "将绝对不确定半径相加，不假设独立误差。只部分相交不合规。",
+      "搜索每块最多一次，最多 4 块；既支持最少块数优先也支持最大边缘裕量优先；完全并列按稳定标识顺序。"
+    ]
+  }
+}

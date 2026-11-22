@@ -1,5 +1,6 @@
 import {json} from './api.js';
 import {populate} from './revisions.js';
+import {reviewControls} from './review.js';
 
 const labels = {state: '结果状态', refs: '出处数', pending: '待核项', transcription: '转写内容', provenance: '出处条目',
   segments: '分段数', alternatives: '校准方案数', candidates: '候选数', years: '年份条数', rows: '数据条数',
@@ -51,7 +52,9 @@ export function mountResults(ui, metadata) {
     return label;
   }));
 
-  function show(item, dataset) {
+  let current;
+
+  function show(item, dataset, activation) {
     const article = document.createElement('details');
     article.className = 'run'; article.open = true;
     const title = document.createElement('summary'); title.textContent = `${names.get(item.operation)} · ${dataset} · ${item.revision.slice(0, 12)}`;
@@ -64,7 +67,9 @@ export function mountResults(ui, metadata) {
     }));
     const download = document.createElement('a'); download.href = `/api/evidence/${item.id}`; download.textContent = '导出证据';
     bar.append(replay, download, output);
-    article.append(title, bar, payload(item.output));
+    article.append(title, bar);
+    if (item.operation === metadata.review_operation) article.append(reviewControls(ui, item, activation));
+    article.append(payload(item.output));
     return article;
   }
 
@@ -73,11 +78,13 @@ export function mountResults(ui, metadata) {
     ui.perform(async () => {
       const dataset = ui.name();
       const operations = Array.from(choices.querySelectorAll(':checked'), (input) => input.value);
+      const activation = current.generation;
       const batch = await json('/api/run', {dataset, operations, revision: selection.value || null});
-      runs.replaceChildren(...batch.runs.map((run) => show(run, dataset)));
+      runs.replaceChildren(...batch.runs.map((run) => show(run, dataset, activation)));
     });
   });
   return (history, switched) => {
+    current = history.head;
     if (switched) runs.replaceChildren();
     populate(selection, [['', '当前发布版本'], ...history.versions.map((v) => [v.id, v.id.slice(0, 12)])]);
   };

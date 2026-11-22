@@ -155,6 +155,46 @@
       "id": "wb_schema",
       "path": "workbench/schema.sql",
       "responsibility": "版本归属、外键和运行唯一性约束"
+    },
+    {
+      "id": "witness",
+      "path": "gauge/witness.py",
+      "responsibility": "按各实测日核对实测与当日固定成员证书区间，并分别复核目标"
+    },
+    {
+      "id": "wb_review",
+      "path": "workbench/review.py",
+      "responsibility": "按当前发布代次和领域资格复核加工成品"
+    },
+    {
+      "id": "wb_dispatch",
+      "path": "workbench/dispatch.py",
+      "responsibility": "签发及复验绑定复核和原证据的交接凭据"
+    },
+    {
+      "id": "wb_handoff_schema",
+      "path": "workbench/handoff.sql",
+      "responsibility": "复核状态、代次归属及一单一交接的持久化约束"
+    },
+    {
+      "id": "ui_review_js",
+      "path": "web/review.js",
+      "responsibility": "展示运行复核历史并发起复核和签发操作"
+    },
+    {
+      "id": "stack_delta",
+      "path": "gauge/stack_delta.py",
+      "responsibility": "在同一证书裁决日比较两个虚拟配置，抵消共用实体项，并分别给出绝对区间与差值区间。"
+    },
+    {
+      "id": "change_chain",
+      "path": "gauge/change_chain.py",
+      "responsibility": "逐步核对虚拟换型的差值限，并独立用首尾实体算净差。"
+    },
+    {
+      "id": "certificate_drift",
+      "path": "gauge/certificate_drift.py",
+      "responsibility": "对固定组块分别查两日的独立实测与证书，将可解释换证差额和未解释残差分开报告。"
     }
   ],
   "workflows": [
@@ -398,6 +438,131 @@
         "固定输入修订",
         "证书有效期分段"
       ]
+    },
+    {
+      "id": "wb-witness",
+      "name": "组块实测见证核验",
+      "entry": "POST /api/run (witness)",
+      "success": "按各实测日核对实测与当日固定成员证书区间，并分别复核目标",
+      "failure": "测量落在目标内仍可能与证书矛盾；证书过期时报未解",
+      "verification": "python3 -B examples/workbench_check.py witness",
+      "module_ids": [
+        "wb_runs",
+        "wb_operations",
+        "witness",
+        "certificate_ledger",
+        "fit",
+        "certificates",
+        "period_check",
+        "search"
+      ],
+      "steps": [
+        "固定同一份已发布的原料修订",
+        "按各实测日核对实测与当日固定成员证书区间，并分别复核目标",
+        "写成可复算并可导出证据的产出"
+      ]
+    },
+    {
+      "id": "wb-review",
+      "name": "业务成品复核",
+      "entry": "POST /api/review/open + /api/review/decide",
+      "success": "复核绑定运行与当前发布代次；可批准合格结果，也可保留退回的记录。",
+      "failure": "领域未过或代次已过时不能批准；已决定的单据不能改判。",
+      "module_ids": [
+        "wb_review",
+        "wb_evidence",
+        "wb_runs",
+        "wb_catalog",
+        "wb_db"
+      ],
+      "verification": "python3 -B examples/workbench_check.py witness",
+      "steps": [
+        "核对运行的原稿、规范化输入和产出摘要",
+        "按领域条件计算可否放行",
+        "绑定发布代次并持久化复核结论"
+      ]
+    },
+    {
+      "id": "wb-dispatch",
+      "name": "签发交接凭据",
+      "entry": "POST /api/dispatch + GET /api/dispatch/{review}",
+      "success": "通过复核后签发绑定原始原料和领域成品的凭据；已经签发的历史凭据可以再次下载。",
+      "failure": "复核已批准但尚未签发时若发布代次变化，拒绝新签发；恢复相同修订不复用旧批准。",
+      "module_ids": [
+        "wb_dispatch",
+        "wb_review",
+        "wb_evidence",
+        "wb_catalog",
+        "wb_db"
+      ],
+      "verification": "python3 -B examples/workbench_check.py witness",
+      "steps": [
+        "读取已通过的复核及当前发布指针",
+        "核验证据并写入凭据摘要",
+        "下载时再验摘要，不用当前原料替换旧证据"
+      ]
+    },
+    {
+      "id": "wb-stack-delta",
+      "name": "同日组块差值",
+      "entry": "POST /api/run (stack-delta)",
+      "success": "在同一证书裁决日比较两个虚拟配置，抵消共用实体项，并分别给出绝对区间与差值区间。",
+      "failure": "不同实体即使同名义长度也不抵消；任一在用块证书无效时差值未决，即使它是共用块。",
+      "verification": "python3 -B examples/workbench_check.py stack-delta",
+      "module_ids": [
+        "wb_runs",
+        "wb_operations",
+        "stack_delta",
+        "fit",
+        "certificates"
+      ],
+      "steps": [
+        "固定原料修订",
+        "在同一证书裁决日比较两个虚拟配置，抵消共用实体项，并分别给出绝对区间与差值区间。",
+        "更正原料后对读旧产出、复算并导出原证据"
+      ]
+    },
+    {
+      "id": "wb-change-chain",
+      "name": "同日换型链核验",
+      "entry": "POST /api/run (change-chain)",
+      "success": "逐步核对虚拟换型的差值限，并独立用首尾实体算净差。",
+      "failure": "回到初始配置净差为零；中间站差值不合规仍不能放行。",
+      "verification": "python3 -B examples/workbench_check.py change-chain",
+      "module_ids": [
+        "wb_runs",
+        "wb_operations",
+        "change_chain",
+        "stack_delta",
+        "certificates",
+        "fit"
+      ],
+      "steps": [
+        "固定原料修订",
+        "逐步核对虚拟换型的差值限，并独立用首尾实体算净差。",
+        "更正原料后对读旧产出、复算并导出原证据"
+      ]
+    },
+    {
+      "id": "wb-certificate-drift",
+      "name": "换证差值与复测核对",
+      "entry": "POST /api/run (certificate-drift)",
+      "success": "对固定组块分别查两日的独立实测与证书，将可解释换证差额和未解释残差分开报告。",
+      "failure": "两日仍各自与证书相容，但单块重新发证时即使中心与半径完全相同，也会扩展换证差额。",
+      "verification": "python3 -B examples/workbench_check.py certificate-drift",
+      "module_ids": [
+        "wb_runs",
+        "wb_operations",
+        "certificate_drift",
+        "witness",
+        "certificates",
+        "fit"
+      ],
+      "steps": [
+        "固定原料修订",
+        "对固定组块分别查两日的独立实测与证书，将可解释换证差额和未解释残差分开报告。",
+        "更正原料后对读旧产出、复算并导出原证据"
+      ]
     }
   ],
   "complexity": {
@@ -409,7 +574,13 @@
       "保留原始输入与规范化版本",
       "原子批加工",
       "固定修订复算",
-      "导出前校验证据摘要"
+      "导出前校验证据摘要",
+      "按各实测日核对实测与当日固定成员证书区间，并分别复核目标",
+      "按领域资格与发布代次审批",
+      "校验证据、审批与当前指针后签发，历史凭据重试不重新决策",
+      "在同一证书裁决日比较两个虚拟配置，抵消共用实体项，并分别给出绝对区间与差值区间。",
+      "逐步核对虚拟换型的差值限，并独立用首尾实体算净差。",
+      "对固定组块分别查两日的独立实测与证书，将可解释换证差额和未解释残差分开报告。"
     ]
   }
 }

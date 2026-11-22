@@ -74,6 +74,10 @@
   "stack": [
     "A"
   ],
+  "comparison_stack": ["A", "B"],
+  "delta_limits_nm": [400000, 400004],
+  "change_chain": {"steps": [{"to": ["A", "B"], "limits_nm": [400000, 400004]},
+                            {"to": ["A"], "limits_nm": [-400004, -400000]}], "net_limits_nm": [0, 0]},
   "max_blocks": 2,
   "rank": "margin",
   "check_dates": [
@@ -81,6 +85,13 @@
     "2026-11-01",
     "2027-01-01"
   ],
+  "witness_readings": [
+    {"on": "2026-10-30", "center_nm": 1000005, "uncertainty_nm": 0},
+    {"on": "2026-10-31", "center_nm": 1000006, "uncertainty_nm": 2},
+    {"on": "2026-11-01", "center_nm": 999990, "uncertainty_nm": 1},
+    {"on": "2027-01-01", "center_nm": 1000005, "uncertainty_nm": 0}
+  ],
+  "certificate_drift": {"dates": ["2026-10-30", "2026-10-31"], "max_unexplained_nm": 3},
   "availability_window": [
     "2026-10-30",
     "2027-01-02"

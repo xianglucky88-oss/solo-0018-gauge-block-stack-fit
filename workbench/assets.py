@@ -6,7 +6,7 @@ from .errors import Problem
 WEB = Path(__file__).resolve().parent.parent
 _FILES = {'/': ('index.html', 'text/html'), '/assets/theme.css': ('theme.css', 'text/css')}
 _FILES.update({f'/assets/{module}.js': (f'{module}.js', 'text/javascript')
-               for module in ('app', 'api', 'intake', 'revisions', 'results')})
+               for module in ('app', 'api', 'intake', 'revisions', 'results', 'review')})
 
 
 def get(path):

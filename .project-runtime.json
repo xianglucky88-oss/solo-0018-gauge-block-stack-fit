@@ -66,6 +66,30 @@
     {
       "workflow_id": "wb-availability-windows",
       "command": "python3 -B examples/workbench_check.py availability-windows"
+    },
+    {
+      "workflow_id": "wb-witness",
+      "command": "python3 -B examples/workbench_check.py witness"
+    },
+    {
+      "workflow_id": "wb-review",
+      "command": "python3 -B examples/workbench_check.py witness"
+    },
+    {
+      "workflow_id": "wb-dispatch",
+      "command": "python3 -B examples/workbench_check.py witness"
+    },
+    {
+      "workflow_id": "wb-stack-delta",
+      "command": "python3 -B examples/workbench_check.py stack-delta"
+    },
+    {
+      "workflow_id": "wb-change-chain",
+      "command": "python3 -B examples/workbench_check.py change-chain"
+    },
+    {
+      "workflow_id": "wb-certificate-drift",
+      "command": "python3 -B examples/workbench_check.py certificate-drift"
     }
   ]
 }

@@ -1,4 +1,8 @@
 const messages = {
+  review_activation_changed: '加工件不属于当前发布代次；请重新载入并加工',
+  review_already_decided: '已完成的复核不能改判',
+  review_domain_not_eligible: '加工件不满足领域放行条件',
+  dispatch_requires_approval: '只有通过复核的加工件才能签发',
   invalid_json: 'JSON 无效或有重复字段', domain_input: '原料不符合业务规则',
   generation_conflict: '当前版本已变化，请重新载入；暂存单需重新导入',
   no_published_revision: '数据集还没有发布版本', operation_selection: '请选择至少一个加工项目',

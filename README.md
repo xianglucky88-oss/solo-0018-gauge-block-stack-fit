@@ -10,6 +10,24 @@ python3 -B -m workbench
 
 新增领域加工：跨日组合复验、固定组合证书账、证书有效期分段。流程验收：`python3 -B examples/workbench_check.py`。
 
+### 同日组块差值
+
+在工作台运行 `stack-delta`。在同一证书裁决日比较两个虚拟配置，抵消共用实体项，并分别给出绝对区间与差值区间。演练：`python3 -B examples/workbench_check.py stack-delta`。
+
+### 同日换型链核验
+
+在工作台运行 `change-chain`。逐步核对虚拟换型的差值限，并独立用首尾实体算净差。演练：`python3 -B examples/workbench_check.py change-chain`。
+
+### 换证差值与复测核对
+
+在工作台运行 `certificate-drift`。对固定组块分别查两日的独立实测与证书，将可解释换证差额和未解释残差分开报告。演练：`python3 -B examples/workbench_check.py certificate-drift`。
+
+### 成品复核与交接
+
+运行 `witness` 后在结果中打开「查看复核交接」。合格成品可通过复核后签发；不合格成品可退回且保留原判定。发布新修订或恢复旧修订都会换代，已经通过但未签发的旧复核不能补签。已签凭据可从同一运行的历史复核中下载。
+
+旧版工作台数据库打开时会在事务中自动升级到 SQLite 结构 v2，不改写原始录入、历史运行或证据。升级后的数据库不再由旧版工作台打开；保留旧版时请使用数据库的独立副本。
+
 兼容保留原 HTTP 服务和数据格式，以下是原服务说明。
 
 ---
@@ -36,3 +54,7 @@ python3 -B -m gauge.example /stackfit/conforming-stacks
 ```
 
 参见 [领域规则与接口](PROJECT_SPEC.md)。`examples/demo.json` 为完整合成输入；其他示例用于观察拒收或待核。业务单元测试留待后续，当前不假设联网、数据库或已有用户数据。
+
+### 组块实测见证核验
+
+发布更新后的 `examples/workbench.json`，在结果区选择「组块实测见证核验」。验收命令：`python3 -B examples/workbench_check.py witness`。这项加工可选；老原料不含 `witness_readings` 时仍可使用原操作。

@@ -23,4 +23,5 @@ class Operations:
     def metadata(self):
         return {'title': self.profile.TITLE, 'product': self.profile.PRODUCT, 'theme': self.profile.THEME,
                 'example_dataset': self.profile.DEFAULT_DATASET, 'work_label': self.profile.WORK_LABEL,
+                'review_operation': self.profile.REVIEW[0],
                 'operations': [{'id': key, 'label': label} for key, (label, _) in self.operations.items()]}

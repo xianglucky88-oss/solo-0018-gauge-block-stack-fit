@@ -1,0 +1,60 @@
+{
+  "on": "2026-11-01",
+  "blocks": {
+    "A": {
+      "nominal_nm": 1000000,
+      "certificates": [
+        {"id": "c-a", "from": "2026-01-01", "until": "2027-01-01", "correction_nm": 5, "uncertainty_nm": 4}
+      ]
+    },
+    "B": {
+      "nominal_nm": 700000,
+      "certificates": [
+        {"id": "c-b", "from": "2026-01-01", "until": "2027-01-01", "correction_nm": -3, "uncertainty_nm": 3}
+      ]
+    },
+    "C": {
+      "nominal_nm": 800000,
+      "certificates": [
+        {"id": "c-c", "from": "2026-01-01", "until": "2027-01-01", "correction_nm": 2, "uncertainty_nm": 6}
+      ]
+    },
+    "D": {
+      "nominal_nm": 500000,
+      "certificates": [
+        {"id": "c-d", "from": "2026-01-01", "until": "2027-01-01", "correction_nm": 0, "uncertainty_nm": 2}
+      ]
+    },
+    "E": {
+      "nominal_nm": 300000,
+      "certificates": [
+        {"id": "c-e", "from": "2026-01-01", "until": "2027-01-01", "correction_nm": 1, "uncertainty_nm": 2}
+      ]
+    },
+    "F": {
+      "nominal_nm": 200000,
+      "certificates": [
+        {"id": "c-f", "from": "2026-01-01", "until": "2027-01-01", "correction_nm": -2, "uncertainty_nm": 1}
+      ]
+    },
+    "G": {
+      "nominal_nm": 100000,
+      "certificates": [
+        {"id": "c-g", "from": "2026-01-01", "until": "2027-01-01", "correction_nm": 0, "uncertainty_nm": 1}
+      ]
+    },
+    "H": {
+      "nominal_nm": 1000000,
+      "certificates": [
+        {"id": "c-h", "from": "2026-01-01", "until": "2027-01-01", "correction_nm": -4, "uncertainty_nm": 3}
+      ]
+    }
+  },
+  "targets": [
+    {"target_nm": 1000000, "tolerance_nm": 15},
+    {"target_nm": 1700000, "tolerance_nm": 15},
+    {"target_nm": 2500000, "tolerance_nm": 3}
+  ],
+  "max_blocks": 6,
+  "min_new_per_level": 1
+}

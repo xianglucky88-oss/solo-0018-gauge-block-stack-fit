@@ -3,12 +3,15 @@ import json
 from http.server import BaseHTTPRequestHandler, HTTPServer
 from . import search
 from . import fit
+from . import steps
 
 
 ROUTES = {
     '/stackfit/certificate-status': search.available,
     '/stackfit/stack-interval': fit.check,
     '/stackfit/conforming-stacks': search.recommend,
+    '/stackfit/step-card': steps.step_card,
+    '/stackfit/step-counterexample': steps.step_counterexample,
 }
 
 

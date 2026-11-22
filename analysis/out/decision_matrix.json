@@ -1,0 +1,2120 @@
+{
+  "scenario": "scenario.json",
+  "target_nm": 1000000,
+  "tolerance_nm": 12,
+  "target_window_nm": [
+    999988,
+    1000012
+  ],
+  "max_blocks": 4,
+  "rank": "margin",
+  "dates": {
+    "D1": "2026-11-15",
+    "D2": "2026-12-15"
+  },
+  "quotes": [
+    "S-A",
+    "S-B",
+    "S-C",
+    "S-D"
+  ],
+  "results": {
+    "base": [
+      {
+        "quote": "S-A",
+        "variant": false,
+        "classification": "order_now",
+        "feasible_dates": [
+          "D1",
+          "D2"
+        ],
+        "feasible_date_count": 2,
+        "dates": {
+          "D1": {
+            "on": "2026-11-15",
+            "certificate_status_http": 200,
+            "status": {
+              "C": {
+                "usable": true,
+                "correction_nm": 1,
+                "radius_nm": 3,
+                "center_nm": 500001,
+                "certificate": "c-c",
+                "bounds_nm": [
+                  499998,
+                  500004
+                ]
+              },
+              "D": {
+                "usable": true,
+                "correction_nm": 0,
+                "radius_nm": 1,
+                "center_nm": 300000,
+                "certificate": "c-d",
+                "bounds_nm": [
+                  299999,
+                  300001
+                ]
+              },
+              "F": {
+                "usable": false,
+                "reason": "no_valid_certificate"
+              },
+              "H": {
+                "usable": false,
+                "reason": "no_valid_certificate"
+              },
+              "I": {
+                "usable": false,
+                "reason": "overlap"
+              },
+              "J": {
+                "usable": true,
+                "correction_nm": 0,
+                "radius_nm": 1,
+                "center_nm": 600000,
+                "certificate": "c-j",
+                "bounds_nm": [
+                  599999,
+                  600001
+                ]
+              },
+              "S-A": {
+                "usable": true,
+                "correction_nm": 1,
+                "radius_nm": 2,
+                "center_nm": 200001,
+                "certificate": "q-sa",
+                "bounds_nm": [
+                  199999,
+                  200003
+                ]
+              }
+            },
+            "unusable": {
+              "F": "no_valid_certificate",
+              "H": "no_valid_certificate",
+              "I": "overlap"
+            },
+            "conforming_stacks_http": 200,
+            "recommendation": {
+              "blocks": [
+                "C",
+                "D",
+                "S-A"
+              ],
+              "center_nm": 1000002,
+              "bounds_nm": [
+                999996,
+                1000008
+              ],
+              "state": "within",
+              "margin_nm": 4,
+              "evidence": {
+                "C": "c-c",
+                "D": "c-d",
+                "S-A": "q-sa"
+              }
+            },
+            "feasible_count": 1,
+            "feasible_stacks": [
+              {
+                "blocks": [
+                  "C",
+                  "D",
+                  "S-A"
+                ],
+                "center_nm": 1000002,
+                "bounds_nm": [
+                  999996,
+                  1000008
+                ],
+                "state": "within",
+                "margin_nm": 4,
+                "evidence": {
+                  "C": "c-c",
+                  "D": "c-d",
+                  "S-A": "q-sa"
+                }
+              }
+            ],
+            "feasible": true,
+            "attempts_considered": 8,
+            "closest_attempt": {
+              "blocks": [
+                "C",
+                "D",
+                "S-A"
+              ],
+              "state": "within",
+              "center_nm": 1000002,
+              "bounds_nm": [
+                999996,
+                1000008
+              ],
+              "margin_nm": 4
+            }
+          },
+          "D2": {
+            "on": "2026-12-15",
+            "certificate_status_http": 200,
+            "status": {
+              "C": {
+                "usable": true,
+                "correction_nm": 1,
+                "radius_nm": 3,
+                "center_nm": 500001,
+                "certificate": "c-c",
+                "bounds_nm": [
+                  499998,
+                  500004
+                ]
+              },
+              "D": {
+                "usable": false,
+                "reason": "no_valid_certificate"
+              },
+              "F": {
+                "usable": true,
+                "correction_nm": -1,
+                "radius_nm": 2,
+                "center_nm": 299999,
+                "certificate": "c-f",
+                "bounds_nm": [
+                  299997,
+                  300001
+                ]
+              },
+              "H": {
+                "usable": false,
+                "reason": "no_valid_certificate"
+              },
+              "I": {
+                "usable": false,
+                "reason": "overlap"
+              },
+              "J": {
+                "usable": false,
+                "reason": "no_valid_certificate"
+              },
+              "S-A": {
+                "usable": true,
+                "correction_nm": 1,
+                "radius_nm": 2,
+                "center_nm": 200001,
+                "certificate": "q-sa",
+                "bounds_nm": [
+                  199999,
+                  200003
+                ]
+              }
+            },
+            "unusable": {
+              "D": "no_valid_certificate",
+              "H": "no_valid_certificate",
+              "I": "overlap",
+              "J": "no_valid_certificate"
+            },
+            "conforming_stacks_http": 200,
+            "recommendation": {
+              "blocks": [
+                "C",
+                "F",
+                "S-A"
+              ],
+              "center_nm": 1000001,
+              "bounds_nm": [
+                999994,
+                1000008
+              ],
+              "state": "within",
+              "margin_nm": 4,
+              "evidence": {
+                "C": "c-c",
+                "F": "c-f",
+                "S-A": "q-sa"
+              }
+            },
+            "feasible_count": 1,
+            "feasible_stacks": [
+              {
+                "blocks": [
+                  "C",
+                  "F",
+                  "S-A"
+                ],
+                "center_nm": 1000001,
+                "bounds_nm": [
+                  999994,
+                  1000008
+                ],
+                "state": "within",
+                "margin_nm": 4,
+                "evidence": {
+                  "C": "c-c",
+                  "F": "c-f",
+                  "S-A": "q-sa"
+                }
+              }
+            ],
+            "feasible": true,
+            "attempts_considered": 4,
+            "closest_attempt": {
+              "blocks": [
+                "C",
+                "F",
+                "S-A"
+              ],
+              "state": "within",
+              "center_nm": 1000001,
+              "bounds_nm": [
+                999994,
+                1000008
+              ],
+              "margin_nm": 4
+            }
+          }
+        }
+      },
+      {
+        "quote": "S-B",
+        "variant": false,
+        "classification": "wait_for_date",
+        "feasible_dates": [
+          "D1"
+        ],
+        "feasible_date_count": 1,
+        "dates": {
+          "D1": {
+            "on": "2026-11-15",
+            "certificate_status_http": 200,
+            "status": {
+              "C": {
+                "usable": true,
+                "correction_nm": 1,
+                "radius_nm": 3,
+                "center_nm": 500001,
+                "certificate": "c-c",
+                "bounds_nm": [
+                  499998,
+                  500004
+                ]
+              },
+              "D": {
+                "usable": true,
+                "correction_nm": 0,
+                "radius_nm": 1,
+                "center_nm": 300000,
+                "certificate": "c-d",
+                "bounds_nm": [
+                  299999,
+                  300001
+                ]
+              },
+              "F": {
+                "usable": false,
+                "reason": "no_valid_certificate"
+              },
+              "H": {
+                "usable": false,
+                "reason": "no_valid_certificate"
+              },
+              "I": {
+                "usable": false,
+                "reason": "overlap"
+              },
+              "J": {
+                "usable": true,
+                "correction_nm": 0,
+                "radius_nm": 1,
+                "center_nm": 600000,
+                "certificate": "c-j",
+                "bounds_nm": [
+                  599999,
+                  600001
+                ]
+              },
+              "S-B": {
+                "usable": true,
+                "correction_nm": 0,
+                "radius_nm": 1,
+                "center_nm": 400000,
+                "certificate": "q-sb",
+                "bounds_nm": [
+                  399999,
+                  400001
+                ]
+              }
+            },
+            "unusable": {
+              "F": "no_valid_certificate",
+              "H": "no_valid_certificate",
+              "I": "overlap"
+            },
+            "conforming_stacks_http": 200,
+            "recommendation": {
+              "blocks": [
+                "J",
+                "S-B"
+              ],
+              "center_nm": 1000000,
+              "bounds_nm": [
+                999998,
+                1000002
+              ],
+              "state": "within",
+              "margin_nm": 10,
+              "evidence": {
+                "J": "c-j",
+                "S-B": "q-sb"
+              }
+            },
+            "feasible_count": 1,
+            "feasible_stacks": [
+              {
+                "blocks": [
+                  "J",
+                  "S-B"
+                ],
+                "center_nm": 1000000,
+                "bounds_nm": [
+                  999998,
+                  1000002
+                ],
+                "state": "within",
+                "margin_nm": 10,
+                "evidence": {
+                  "J": "c-j",
+                  "S-B": "q-sb"
+                }
+              }
+            ],
+            "feasible": true,
+            "attempts_considered": 8,
+            "closest_attempt": {
+              "blocks": [
+                "J",
+                "S-B"
+              ],
+              "state": "within",
+              "center_nm": 1000000,
+              "bounds_nm": [
+                999998,
+                1000002
+              ],
+              "margin_nm": 10
+            }
+          },
+          "D2": {
+            "on": "2026-12-15",
+            "certificate_status_http": 200,
+            "status": {
+              "C": {
+                "usable": true,
+                "correction_nm": 1,
+                "radius_nm": 3,
+                "center_nm": 500001,
+                "certificate": "c-c",
+                "bounds_nm": [
+                  499998,
+                  500004
+                ]
+              },
+              "D": {
+                "usable": false,
+                "reason": "no_valid_certificate"
+              },
+              "F": {
+                "usable": true,
+                "correction_nm": -1,
+                "radius_nm": 2,
+                "center_nm": 299999,
+                "certificate": "c-f",
+                "bounds_nm": [
+                  299997,
+                  300001
+                ]
+              },
+              "H": {
+                "usable": false,
+                "reason": "no_valid_certificate"
+              },
+              "I": {
+                "usable": false,
+                "reason": "overlap"
+              },
+              "J": {
+                "usable": false,
+                "reason": "no_valid_certificate"
+              },
+              "S-B": {
+                "usable": true,
+                "correction_nm": 0,
+                "radius_nm": 1,
+                "center_nm": 400000,
+                "certificate": "q-sb",
+                "bounds_nm": [
+                  399999,
+                  400001
+                ]
+              }
+            },
+            "unusable": {
+              "D": "no_valid_certificate",
+              "H": "no_valid_certificate",
+              "I": "overlap",
+              "J": "no_valid_certificate"
+            },
+            "conforming_stacks_http": 200,
+            "recommendation": null,
+            "feasible_count": 0,
+            "feasible_stacks": [],
+            "feasible": false,
+            "attempts_considered": 4,
+            "closest_attempt": {
+              "blocks": [
+                "C",
+                "S-B"
+              ],
+              "state": "outside",
+              "center_nm": 900001,
+              "bounds_nm": [
+                899997,
+                900005
+              ],
+              "margin_nm": -99991
+            }
+          }
+        }
+      },
+      {
+        "quote": "S-C",
+        "variant": false,
+        "classification": "impossible_under_current_certificates",
+        "feasible_dates": [],
+        "feasible_date_count": 0,
+        "dates": {
+          "D1": {
+            "on": "2026-11-15",
+            "certificate_status_http": 200,
+            "status": {
+              "C": {
+                "usable": true,
+                "correction_nm": 1,
+                "radius_nm": 3,
+                "center_nm": 500001,
+                "certificate": "c-c",
+                "bounds_nm": [
+                  499998,
+                  500004
+                ]
+              },
+              "D": {
+                "usable": true,
+                "correction_nm": 0,
+                "radius_nm": 1,
+                "center_nm": 300000,
+                "certificate": "c-d",
+                "bounds_nm": [
+                  299999,
+                  300001
+                ]
+              },
+              "F": {
+                "usable": false,
+                "reason": "no_valid_certificate"
+              },
+              "H": {
+                "usable": false,
+                "reason": "no_valid_certificate"
+              },
+              "I": {
+                "usable": false,
+                "reason": "overlap"
+              },
+              "J": {
+                "usable": true,
+                "correction_nm": 0,
+                "radius_nm": 1,
+                "center_nm": 600000,
+                "certificate": "c-j",
+                "bounds_nm": [
+                  599999,
+                  600001
+                ]
+              },
+              "S-C": {
+                "usable": true,
+                "correction_nm": 0,
+                "radius_nm": 20,
+                "center_nm": 200000,
+                "certificate": "q-sc",
+                "bounds_nm": [
+                  199980,
+                  200020
+                ]
+              }
+            },
+            "unusable": {
+              "F": "no_valid_certificate",
+              "H": "no_valid_certificate",
+              "I": "overlap"
+            },
+            "conforming_stacks_http": 200,
+            "recommendation": null,
+            "feasible_count": 0,
+            "feasible_stacks": [],
+            "feasible": false,
+            "attempts_considered": 8,
+            "closest_attempt": {
+              "blocks": [
+                "C",
+                "D",
+                "S-C"
+              ],
+              "state": "partial",
+              "center_nm": 1000001,
+              "bounds_nm": [
+                999977,
+                1000025
+              ],
+              "margin_nm": -13
+            }
+          },
+          "D2": {
+            "on": "2026-12-15",
+            "certificate_status_http": 200,
+            "status": {
+              "C": {
+                "usable": true,
+                "correction_nm": 1,
+                "radius_nm": 3,
+                "center_nm": 500001,
+                "certificate": "c-c",
+                "bounds_nm": [
+                  499998,
+                  500004
+                ]
+              },
+              "D": {
+                "usable": false,
+                "reason": "no_valid_certificate"
+              },
+              "F": {
+                "usable": true,
+                "correction_nm": -1,
+                "radius_nm": 2,
+                "center_nm": 299999,
+                "certificate": "c-f",
+                "bounds_nm": [
+                  299997,
+                  300001
+                ]
+              },
+              "H": {
+                "usable": false,
+                "reason": "no_valid_certificate"
+              },
+              "I": {
+                "usable": false,
+                "reason": "overlap"
+              },
+              "J": {
+                "usable": false,
+                "reason": "no_valid_certificate"
+              },
+              "S-C": {
+                "usable": true,
+                "correction_nm": 0,
+                "radius_nm": 20,
+                "center_nm": 200000,
+                "certificate": "q-sc",
+                "bounds_nm": [
+                  199980,
+                  200020
+                ]
+              }
+            },
+            "unusable": {
+              "D": "no_valid_certificate",
+              "H": "no_valid_certificate",
+              "I": "overlap",
+              "J": "no_valid_certificate"
+            },
+            "conforming_stacks_http": 200,
+            "recommendation": null,
+            "feasible_count": 0,
+            "feasible_stacks": [],
+            "feasible": false,
+            "attempts_considered": 4,
+            "closest_attempt": {
+              "blocks": [
+                "C",
+                "F",
+                "S-C"
+              ],
+              "state": "partial",
+              "center_nm": 1000000,
+              "bounds_nm": [
+                999975,
+                1000025
+              ],
+              "margin_nm": -13
+            }
+          }
+        }
+      },
+      {
+        "quote": "S-D",
+        "variant": false,
+        "classification": "order_now",
+        "feasible_dates": [
+          "D1",
+          "D2"
+        ],
+        "feasible_date_count": 2,
+        "dates": {
+          "D1": {
+            "on": "2026-11-15",
+            "certificate_status_http": 200,
+            "status": {
+              "C": {
+                "usable": true,
+                "correction_nm": 1,
+                "radius_nm": 3,
+                "center_nm": 500001,
+                "certificate": "c-c",
+                "bounds_nm": [
+                  499998,
+                  500004
+                ]
+              },
+              "D": {
+                "usable": true,
+                "correction_nm": 0,
+                "radius_nm": 1,
+                "center_nm": 300000,
+                "certificate": "c-d",
+                "bounds_nm": [
+                  299999,
+                  300001
+                ]
+              },
+              "F": {
+                "usable": false,
+                "reason": "no_valid_certificate"
+              },
+              "H": {
+                "usable": false,
+                "reason": "no_valid_certificate"
+              },
+              "I": {
+                "usable": false,
+                "reason": "overlap"
+              },
+              "J": {
+                "usable": true,
+                "correction_nm": 0,
+                "radius_nm": 1,
+                "center_nm": 600000,
+                "certificate": "c-j",
+                "bounds_nm": [
+                  599999,
+                  600001
+                ]
+              },
+              "S-D": {
+                "usable": true,
+                "correction_nm": 0,
+                "radius_nm": 2,
+                "center_nm": 500000,
+                "certificate": "q-sd",
+                "bounds_nm": [
+                  499998,
+                  500002
+                ]
+              }
+            },
+            "unusable": {
+              "F": "no_valid_certificate",
+              "H": "no_valid_certificate",
+              "I": "overlap"
+            },
+            "conforming_stacks_http": 200,
+            "recommendation": {
+              "blocks": [
+                "C",
+                "S-D"
+              ],
+              "center_nm": 1000001,
+              "bounds_nm": [
+                999996,
+                1000006
+              ],
+              "state": "within",
+              "margin_nm": 6,
+              "evidence": {
+                "C": "c-c",
+                "S-D": "q-sd"
+              }
+            },
+            "feasible_count": 1,
+            "feasible_stacks": [
+              {
+                "blocks": [
+                  "C",
+                  "S-D"
+                ],
+                "center_nm": 1000001,
+                "bounds_nm": [
+                  999996,
+                  1000006
+                ],
+                "state": "within",
+                "margin_nm": 6,
+                "evidence": {
+                  "C": "c-c",
+                  "S-D": "q-sd"
+                }
+              }
+            ],
+            "feasible": true,
+            "attempts_considered": 8,
+            "closest_attempt": {
+              "blocks": [
+                "C",
+                "S-D"
+              ],
+              "state": "within",
+              "center_nm": 1000001,
+              "bounds_nm": [
+                999996,
+                1000006
+              ],
+              "margin_nm": 6
+            }
+          },
+          "D2": {
+            "on": "2026-12-15",
+            "certificate_status_http": 200,
+            "status": {
+              "C": {
+                "usable": true,
+                "correction_nm": 1,
+                "radius_nm": 3,
+                "center_nm": 500001,
+                "certificate": "c-c",
+                "bounds_nm": [
+                  499998,
+                  500004
+                ]
+              },
+              "D": {
+                "usable": false,
+                "reason": "no_valid_certificate"
+              },
+              "F": {
+                "usable": true,
+                "correction_nm": -1,
+                "radius_nm": 2,
+                "center_nm": 299999,
+                "certificate": "c-f",
+                "bounds_nm": [
+                  299997,
+                  300001
+                ]
+              },
+              "H": {
+                "usable": false,
+                "reason": "no_valid_certificate"
+              },
+              "I": {
+                "usable": false,
+                "reason": "overlap"
+              },
+              "J": {
+                "usable": false,
+                "reason": "no_valid_certificate"
+              },
+              "S-D": {
+                "usable": true,
+                "correction_nm": 0,
+                "radius_nm": 2,
+                "center_nm": 500000,
+                "certificate": "q-sd",
+                "bounds_nm": [
+                  499998,
+                  500002
+                ]
+              }
+            },
+            "unusable": {
+              "D": "no_valid_certificate",
+              "H": "no_valid_certificate",
+              "I": "overlap",
+              "J": "no_valid_certificate"
+            },
+            "conforming_stacks_http": 200,
+            "recommendation": {
+              "blocks": [
+                "C",
+                "S-D"
+              ],
+              "center_nm": 1000001,
+              "bounds_nm": [
+                999996,
+                1000006
+              ],
+              "state": "within",
+              "margin_nm": 6,
+              "evidence": {
+                "C": "c-c",
+                "S-D": "q-sd"
+              }
+            },
+            "feasible_count": 1,
+            "feasible_stacks": [
+              {
+                "blocks": [
+                  "C",
+                  "S-D"
+                ],
+                "center_nm": 1000001,
+                "bounds_nm": [
+                  999996,
+                  1000006
+                ],
+                "state": "within",
+                "margin_nm": 6,
+                "evidence": {
+                  "C": "c-c",
+                  "S-D": "q-sd"
+                }
+              }
+            ],
+            "feasible": true,
+            "attempts_considered": 4,
+            "closest_attempt": {
+              "blocks": [
+                "C",
+                "S-D"
+              ],
+              "state": "within",
+              "center_nm": 1000001,
+              "bounds_nm": [
+                999996,
+                1000006
+              ],
+              "margin_nm": 6
+            }
+          }
+        }
+      }
+    ],
+    "variant": [
+      {
+        "quote": "S-A",
+        "variant": true,
+        "classification": "wait_for_date",
+        "feasible_dates": [
+          "D2"
+        ],
+        "feasible_date_count": 1,
+        "dates": {
+          "D1": {
+            "on": "2026-11-15",
+            "certificate_status_http": 200,
+            "status": {
+              "C": {
+                "usable": true,
+                "correction_nm": 1,
+                "radius_nm": 3,
+                "center_nm": 500001,
+                "certificate": "c-c",
+                "bounds_nm": [
+                  499998,
+                  500004
+                ]
+              },
+              "D": {
+                "usable": true,
+                "correction_nm": 0,
+                "radius_nm": 1,
+                "center_nm": 300000,
+                "certificate": "c-d",
+                "bounds_nm": [
+                  299999,
+                  300001
+                ]
+              },
+              "F": {
+                "usable": false,
+                "reason": "no_valid_certificate"
+              },
+              "H": {
+                "usable": false,
+                "reason": "no_valid_certificate"
+              },
+              "I": {
+                "usable": false,
+                "reason": "overlap"
+              },
+              "J": {
+                "usable": true,
+                "correction_nm": 0,
+                "radius_nm": 1,
+                "center_nm": 600000,
+                "certificate": "c-j",
+                "bounds_nm": [
+                  599999,
+                  600001
+                ]
+              },
+              "S-A": {
+                "usable": false,
+                "reason": "no_valid_certificate"
+              }
+            },
+            "unusable": {
+              "F": "no_valid_certificate",
+              "H": "no_valid_certificate",
+              "I": "overlap",
+              "S-A": "no_valid_certificate"
+            },
+            "conforming_stacks_http": 200,
+            "recommendation": null,
+            "feasible_count": 0,
+            "feasible_stacks": [],
+            "feasible": false,
+            "attempts_considered": 0,
+            "closest_attempt": null
+          },
+          "D2": {
+            "on": "2026-12-15",
+            "certificate_status_http": 200,
+            "status": {
+              "C": {
+                "usable": true,
+                "correction_nm": 1,
+                "radius_nm": 3,
+                "center_nm": 500001,
+                "certificate": "c-c",
+                "bounds_nm": [
+                  499998,
+                  500004
+                ]
+              },
+              "D": {
+                "usable": false,
+                "reason": "no_valid_certificate"
+              },
+              "F": {
+                "usable": true,
+                "correction_nm": -1,
+                "radius_nm": 2,
+                "center_nm": 299999,
+                "certificate": "c-f",
+                "bounds_nm": [
+                  299997,
+                  300001
+                ]
+              },
+              "H": {
+                "usable": false,
+                "reason": "no_valid_certificate"
+              },
+              "I": {
+                "usable": false,
+                "reason": "overlap"
+              },
+              "J": {
+                "usable": false,
+                "reason": "no_valid_certificate"
+              },
+              "S-A": {
+                "usable": true,
+                "correction_nm": 1,
+                "radius_nm": 2,
+                "center_nm": 200001,
+                "certificate": "q-sa",
+                "bounds_nm": [
+                  199999,
+                  200003
+                ]
+              }
+            },
+            "unusable": {
+              "D": "no_valid_certificate",
+              "H": "no_valid_certificate",
+              "I": "overlap",
+              "J": "no_valid_certificate"
+            },
+            "conforming_stacks_http": 200,
+            "recommendation": {
+              "blocks": [
+                "C",
+                "F",
+                "S-A"
+              ],
+              "center_nm": 1000001,
+              "bounds_nm": [
+                999994,
+                1000008
+              ],
+              "state": "within",
+              "margin_nm": 4,
+              "evidence": {
+                "C": "c-c",
+                "F": "c-f",
+                "S-A": "q-sa"
+              }
+            },
+            "feasible_count": 1,
+            "feasible_stacks": [
+              {
+                "blocks": [
+                  "C",
+                  "F",
+                  "S-A"
+                ],
+                "center_nm": 1000001,
+                "bounds_nm": [
+                  999994,
+                  1000008
+                ],
+                "state": "within",
+                "margin_nm": 4,
+                "evidence": {
+                  "C": "c-c",
+                  "F": "c-f",
+                  "S-A": "q-sa"
+                }
+              }
+            ],
+            "feasible": true,
+            "attempts_considered": 4,
+            "closest_attempt": {
+              "blocks": [
+                "C",
+                "F",
+                "S-A"
+              ],
+              "state": "within",
+              "center_nm": 1000001,
+              "bounds_nm": [
+                999994,
+                1000008
+              ],
+              "margin_nm": 4
+            }
+          }
+        }
+      },
+      {
+        "quote": "S-B",
+        "variant": true,
+        "classification": "wait_for_date",
+        "feasible_dates": [
+          "D1"
+        ],
+        "feasible_date_count": 1,
+        "dates": {
+          "D1": {
+            "on": "2026-11-15",
+            "certificate_status_http": 200,
+            "status": {
+              "C": {
+                "usable": true,
+                "correction_nm": 1,
+                "radius_nm": 3,
+                "center_nm": 500001,
+                "certificate": "c-c",
+                "bounds_nm": [
+                  499998,
+                  500004
+                ]
+              },
+              "D": {
+                "usable": true,
+                "correction_nm": 0,
+                "radius_nm": 1,
+                "center_nm": 300000,
+                "certificate": "c-d",
+                "bounds_nm": [
+                  299999,
+                  300001
+                ]
+              },
+              "F": {
+                "usable": false,
+                "reason": "no_valid_certificate"
+              },
+              "H": {
+                "usable": false,
+                "reason": "no_valid_certificate"
+              },
+              "I": {
+                "usable": false,
+                "reason": "overlap"
+              },
+              "J": {
+                "usable": true,
+                "correction_nm": 0,
+                "radius_nm": 1,
+                "center_nm": 600000,
+                "certificate": "c-j",
+                "bounds_nm": [
+                  599999,
+                  600001
+                ]
+              },
+              "S-B": {
+                "usable": true,
+                "correction_nm": 0,
+                "radius_nm": 1,
+                "center_nm": 400000,
+                "certificate": "q-sb",
+                "bounds_nm": [
+                  399999,
+                  400001
+                ]
+              }
+            },
+            "unusable": {
+              "F": "no_valid_certificate",
+              "H": "no_valid_certificate",
+              "I": "overlap"
+            },
+            "conforming_stacks_http": 200,
+            "recommendation": {
+              "blocks": [
+                "J",
+                "S-B"
+              ],
+              "center_nm": 1000000,
+              "bounds_nm": [
+                999998,
+                1000002
+              ],
+              "state": "within",
+              "margin_nm": 10,
+              "evidence": {
+                "J": "c-j",
+                "S-B": "q-sb"
+              }
+            },
+            "feasible_count": 1,
+            "feasible_stacks": [
+              {
+                "blocks": [
+                  "J",
+                  "S-B"
+                ],
+                "center_nm": 1000000,
+                "bounds_nm": [
+                  999998,
+                  1000002
+                ],
+                "state": "within",
+                "margin_nm": 10,
+                "evidence": {
+                  "J": "c-j",
+                  "S-B": "q-sb"
+                }
+              }
+            ],
+            "feasible": true,
+            "attempts_considered": 8,
+            "closest_attempt": {
+              "blocks": [
+                "J",
+                "S-B"
+              ],
+              "state": "within",
+              "center_nm": 1000000,
+              "bounds_nm": [
+                999998,
+                1000002
+              ],
+              "margin_nm": 10
+            }
+          },
+          "D2": {
+            "on": "2026-12-15",
+            "certificate_status_http": 200,
+            "status": {
+              "C": {
+                "usable": true,
+                "correction_nm": 1,
+                "radius_nm": 3,
+                "center_nm": 500001,
+                "certificate": "c-c",
+                "bounds_nm": [
+                  499998,
+                  500004
+                ]
+              },
+              "D": {
+                "usable": false,
+                "reason": "no_valid_certificate"
+              },
+              "F": {
+                "usable": true,
+                "correction_nm": -1,
+                "radius_nm": 2,
+                "center_nm": 299999,
+                "certificate": "c-f",
+                "bounds_nm": [
+                  299997,
+                  300001
+                ]
+              },
+              "H": {
+                "usable": false,
+                "reason": "no_valid_certificate"
+              },
+              "I": {
+                "usable": false,
+                "reason": "overlap"
+              },
+              "J": {
+                "usable": false,
+                "reason": "no_valid_certificate"
+              },
+              "S-B": {
+                "usable": true,
+                "correction_nm": 0,
+                "radius_nm": 1,
+                "center_nm": 400000,
+                "certificate": "q-sb",
+                "bounds_nm": [
+                  399999,
+                  400001
+                ]
+              }
+            },
+            "unusable": {
+              "D": "no_valid_certificate",
+              "H": "no_valid_certificate",
+              "I": "overlap",
+              "J": "no_valid_certificate"
+            },
+            "conforming_stacks_http": 200,
+            "recommendation": null,
+            "feasible_count": 0,
+            "feasible_stacks": [],
+            "feasible": false,
+            "attempts_considered": 4,
+            "closest_attempt": {
+              "blocks": [
+                "C",
+                "S-B"
+              ],
+              "state": "outside",
+              "center_nm": 900001,
+              "bounds_nm": [
+                899997,
+                900005
+              ],
+              "margin_nm": -99991
+            }
+          }
+        }
+      },
+      {
+        "quote": "S-C",
+        "variant": true,
+        "classification": "impossible_under_current_certificates",
+        "feasible_dates": [],
+        "feasible_date_count": 0,
+        "dates": {
+          "D1": {
+            "on": "2026-11-15",
+            "certificate_status_http": 200,
+            "status": {
+              "C": {
+                "usable": true,
+                "correction_nm": 1,
+                "radius_nm": 3,
+                "center_nm": 500001,
+                "certificate": "c-c",
+                "bounds_nm": [
+                  499998,
+                  500004
+                ]
+              },
+              "D": {
+                "usable": true,
+                "correction_nm": 0,
+                "radius_nm": 1,
+                "center_nm": 300000,
+                "certificate": "c-d",
+                "bounds_nm": [
+                  299999,
+                  300001
+                ]
+              },
+              "F": {
+                "usable": false,
+                "reason": "no_valid_certificate"
+              },
+              "H": {
+                "usable": false,
+                "reason": "no_valid_certificate"
+              },
+              "I": {
+                "usable": false,
+                "reason": "overlap"
+              },
+              "J": {
+                "usable": true,
+                "correction_nm": 0,
+                "radius_nm": 1,
+                "center_nm": 600000,
+                "certificate": "c-j",
+                "bounds_nm": [
+                  599999,
+                  600001
+                ]
+              },
+              "S-C": {
+                "usable": true,
+                "correction_nm": 0,
+                "radius_nm": 20,
+                "center_nm": 200000,
+                "certificate": "q-sc",
+                "bounds_nm": [
+                  199980,
+                  200020
+                ]
+              }
+            },
+            "unusable": {
+              "F": "no_valid_certificate",
+              "H": "no_valid_certificate",
+              "I": "overlap"
+            },
+            "conforming_stacks_http": 200,
+            "recommendation": null,
+            "feasible_count": 0,
+            "feasible_stacks": [],
+            "feasible": false,
+            "attempts_considered": 8,
+            "closest_attempt": {
+              "blocks": [
+                "C",
+                "D",
+                "S-C"
+              ],
+              "state": "partial",
+              "center_nm": 1000001,
+              "bounds_nm": [
+                999977,
+                1000025
+              ],
+              "margin_nm": -13
+            }
+          },
+          "D2": {
+            "on": "2026-12-15",
+            "certificate_status_http": 200,
+            "status": {
+              "C": {
+                "usable": true,
+                "correction_nm": 1,
+                "radius_nm": 3,
+                "center_nm": 500001,
+                "certificate": "c-c",
+                "bounds_nm": [
+                  499998,
+                  500004
+                ]
+              },
+              "D": {
+                "usable": false,
+                "reason": "no_valid_certificate"
+              },
+              "F": {
+                "usable": true,
+                "correction_nm": -1,
+                "radius_nm": 2,
+                "center_nm": 299999,
+                "certificate": "c-f",
+                "bounds_nm": [
+                  299997,
+                  300001
+                ]
+              },
+              "H": {
+                "usable": false,
+                "reason": "no_valid_certificate"
+              },
+              "I": {
+                "usable": false,
+                "reason": "overlap"
+              },
+              "J": {
+                "usable": false,
+                "reason": "no_valid_certificate"
+              },
+              "S-C": {
+                "usable": true,
+                "correction_nm": 0,
+                "radius_nm": 20,
+                "center_nm": 200000,
+                "certificate": "q-sc",
+                "bounds_nm": [
+                  199980,
+                  200020
+                ]
+              }
+            },
+            "unusable": {
+              "D": "no_valid_certificate",
+              "H": "no_valid_certificate",
+              "I": "overlap",
+              "J": "no_valid_certificate"
+            },
+            "conforming_stacks_http": 200,
+            "recommendation": null,
+            "feasible_count": 0,
+            "feasible_stacks": [],
+            "feasible": false,
+            "attempts_considered": 4,
+            "closest_attempt": {
+              "blocks": [
+                "C",
+                "F",
+                "S-C"
+              ],
+              "state": "partial",
+              "center_nm": 1000000,
+              "bounds_nm": [
+                999975,
+                1000025
+              ],
+              "margin_nm": -13
+            }
+          }
+        }
+      },
+      {
+        "quote": "S-D",
+        "variant": true,
+        "classification": "order_now",
+        "feasible_dates": [
+          "D1",
+          "D2"
+        ],
+        "feasible_date_count": 2,
+        "dates": {
+          "D1": {
+            "on": "2026-11-15",
+            "certificate_status_http": 200,
+            "status": {
+              "C": {
+                "usable": true,
+                "correction_nm": 1,
+                "radius_nm": 3,
+                "center_nm": 500001,
+                "certificate": "c-c",
+                "bounds_nm": [
+                  499998,
+                  500004
+                ]
+              },
+              "D": {
+                "usable": true,
+                "correction_nm": 0,
+                "radius_nm": 1,
+                "center_nm": 300000,
+                "certificate": "c-d",
+                "bounds_nm": [
+                  299999,
+                  300001
+                ]
+              },
+              "F": {
+                "usable": false,
+                "reason": "no_valid_certificate"
+              },
+              "H": {
+                "usable": false,
+                "reason": "no_valid_certificate"
+              },
+              "I": {
+                "usable": false,
+                "reason": "overlap"
+              },
+              "J": {
+                "usable": true,
+                "correction_nm": 0,
+                "radius_nm": 1,
+                "center_nm": 600000,
+                "certificate": "c-j",
+                "bounds_nm": [
+                  599999,
+                  600001
+                ]
+              },
+              "S-D": {
+                "usable": true,
+                "correction_nm": 0,
+                "radius_nm": 2,
+                "center_nm": 500000,
+                "certificate": "q-sd",
+                "bounds_nm": [
+                  499998,
+                  500002
+                ]
+              }
+            },
+            "unusable": {
+              "F": "no_valid_certificate",
+              "H": "no_valid_certificate",
+              "I": "overlap"
+            },
+            "conforming_stacks_http": 200,
+            "recommendation": {
+              "blocks": [
+                "C",
+                "S-D"
+              ],
+              "center_nm": 1000001,
+              "bounds_nm": [
+                999996,
+                1000006
+              ],
+              "state": "within",
+              "margin_nm": 6,
+              "evidence": {
+                "C": "c-c",
+                "S-D": "q-sd"
+              }
+            },
+            "feasible_count": 1,
+            "feasible_stacks": [
+              {
+                "blocks": [
+                  "C",
+                  "S-D"
+                ],
+                "center_nm": 1000001,
+                "bounds_nm": [
+                  999996,
+                  1000006
+                ],
+                "state": "within",
+                "margin_nm": 6,
+                "evidence": {
+                  "C": "c-c",
+                  "S-D": "q-sd"
+                }
+              }
+            ],
+            "feasible": true,
+            "attempts_considered": 8,
+            "closest_attempt": {
+              "blocks": [
+                "C",
+                "S-D"
+              ],
+              "state": "within",
+              "center_nm": 1000001,
+              "bounds_nm": [
+                999996,
+                1000006
+              ],
+              "margin_nm": 6
+            }
+          },
+          "D2": {
+            "on": "2026-12-15",
+            "certificate_status_http": 200,
+            "status": {
+              "C": {
+                "usable": true,
+                "correction_nm": 1,
+                "radius_nm": 3,
+                "center_nm": 500001,
+                "certificate": "c-c",
+                "bounds_nm": [
+                  499998,
+                  500004
+                ]
+              },
+              "D": {
+                "usable": false,
+                "reason": "no_valid_certificate"
+              },
+              "F": {
+                "usable": true,
+                "correction_nm": -1,
+                "radius_nm": 2,
+                "center_nm": 299999,
+                "certificate": "c-f",
+                "bounds_nm": [
+                  299997,
+                  300001
+                ]
+              },
+              "H": {
+                "usable": false,
+                "reason": "no_valid_certificate"
+              },
+              "I": {
+                "usable": false,
+                "reason": "overlap"
+              },
+              "J": {
+                "usable": false,
+                "reason": "no_valid_certificate"
+              },
+              "S-D": {
+                "usable": true,
+                "correction_nm": 0,
+                "radius_nm": 2,
+                "center_nm": 500000,
+                "certificate": "q-sd",
+                "bounds_nm": [
+                  499998,
+                  500002
+                ]
+              }
+            },
+            "unusable": {
+              "D": "no_valid_certificate",
+              "H": "no_valid_certificate",
+              "I": "overlap",
+              "J": "no_valid_certificate"
+            },
+            "conforming_stacks_http": 200,
+            "recommendation": {
+              "blocks": [
+                "C",
+                "S-D"
+              ],
+              "center_nm": 1000001,
+              "bounds_nm": [
+                999996,
+                1000006
+              ],
+              "state": "within",
+              "margin_nm": 6,
+              "evidence": {
+                "C": "c-c",
+                "S-D": "q-sd"
+              }
+            },
+            "feasible_count": 1,
+            "feasible_stacks": [
+              {
+                "blocks": [
+                  "C",
+                  "S-D"
+                ],
+                "center_nm": 1000001,
+                "bounds_nm": [
+                  999996,
+                  1000006
+                ],
+                "state": "within",
+                "margin_nm": 6,
+                "evidence": {
+                  "C": "c-c",
+                  "S-D": "q-sd"
+                }
+              }
+            ],
+            "feasible": true,
+            "attempts_considered": 4,
+            "closest_attempt": {
+              "blocks": [
+                "C",
+                "S-D"
+              ],
+              "state": "within",
+              "center_nm": 1000001,
+              "bounds_nm": [
+                999996,
+                1000006
+              ],
+              "margin_nm": 6
+            }
+          }
+        }
+      }
+    ]
+  },
+  "fixed_sets": {
+    "base": {
+      "S-A": [],
+      "S-B": [],
+      "S-C": [],
+      "S-D": [
+        {
+          "blocks": [
+            "C",
+            "S-D"
+          ],
+          "state_per_date": {
+            "D1": "within",
+            "D2": "within"
+          }
+        }
+      ]
+    },
+    "variant": {
+      "S-A": [],
+      "S-B": [],
+      "S-C": [],
+      "S-D": [
+        {
+          "blocks": [
+            "C",
+            "S-D"
+          ],
+          "state_per_date": {
+            "D1": "within",
+            "D2": "within"
+          }
+        }
+      ]
+    }
+  },
+  "best_per_date": {
+    "base": {
+      "D1": {
+        "quote": "S-B",
+        "margin_nm": 10
+      },
+      "D2": {
+        "quote": "S-D",
+        "margin_nm": 6
+      }
+    },
+    "variant": {
+      "D1": {
+        "quote": "S-B",
+        "margin_nm": 10
+      },
+      "D2": {
+        "quote": "S-D",
+        "margin_nm": 6
+      }
+    }
+  },
+  "counterexamples": [
+    {
+      "label": "overlap_not_nominal",
+      "on": "2026-11-15",
+      "stack": [
+        "S-A",
+        "I",
+        "J"
+      ],
+      "http": 200,
+      "state": "unresolved",
+      "unusable": {
+        "I": "overlap"
+      },
+      "why": "I has two certificates covering D1; nominal 200000 must not be substituted.",
+      "nominal_substitution_is_invalid": true
+    },
+    {
+      "label": "gap_not_nominal",
+      "on": "2026-11-15",
+      "stack": [
+        "S-A",
+        "F",
+        "C"
+      ],
+      "http": 200,
+      "state": "unresolved",
+      "unusable": {
+        "F": "no_valid_certificate"
+      },
+      "why": "F certificate starts 2026-12-01, after D1; nominal 300000 must not be substituted.",
+      "nominal_substitution_is_invalid": true
+    },
+    {
+      "label": "expired_not_nominal",
+      "on": "2026-12-15",
+      "stack": [
+        "S-A",
+        "D",
+        "C"
+      ],
+      "http": 200,
+      "state": "unresolved",
+      "unusable": {
+        "D": "no_valid_certificate"
+      },
+      "why": "D certificate ends 2026-12-01 (left-closed/right-open), so it is void on D2.",
+      "nominal_substitution_is_invalid": true
+    }
+  ],
+  "splice_trap": {
+    "best_per_date": {
+      "D1": {
+        "quote": "S-B",
+        "margin_nm": 10
+      },
+      "D2": {
+        "quote": "S-D",
+        "margin_nm": 6
+      }
+    },
+    "distinct_quotes": [
+      "S-B",
+      "S-D"
+    ],
+    "single_order_possible": false,
+    "note": "Per-date optima using different quoted blocks cannot be combined into one order, because the ordered model cannot change after submission."
+  },
+  "guarantees": {
+    "S-A": {
+      "classification": "order_now",
+      "fixed_cross_date_stack": {
+        "attainable": false,
+        "stacks": [],
+        "guarantee": "not available: no single exact stack conforms on both dates, so a fixed-stack order would over-commit beyond what the certificates support"
+      },
+      "late_assembly_locked_purchase": {
+        "attainable": true,
+        "feasible_dates": [
+          "D1",
+          "D2"
+        ],
+        "guarantee": "the ordered block is certified on every candidate date and at least one conforming partner set exists on each date; assembly is deferred until the date is confirmed, but the same partners, bounds and margin are not promised",
+        "does_not_guarantee": "a reproducible exact stack, the per-date optimum, or identical margins"
+      }
+    },
+    "S-B": {
+      "classification": "wait_for_date",
+      "fixed_cross_date_stack": {
+        "attainable": false,
+        "stacks": [],
+        "guarantee": "not available: the quote does not reach every candidate date"
+      },
+      "late_assembly_locked_purchase": {
+        "attainable": false,
+        "feasible_dates": [
+          "D1"
+        ],
+        "guarantee": "only the dates listed are covered; on the remaining date no conforming partner set exists, so locking the purchase does not guarantee a usable stack everywhere",
+        "does_not_guarantee": "a reproducible exact stack, the per-date optimum, or identical margins"
+      }
+    },
+    "S-C": {
+      "classification": "impossible_under_current_certificates",
+      "fixed_cross_date_stack": {
+        "attainable": false,
+        "stacks": [],
+        "guarantee": "not available: the quote does not reach every candidate date"
+      },
+      "late_assembly_locked_purchase": {
+        "attainable": false,
+        "feasible_dates": [],
+        "guarantee": "not available: the ordered block has no conforming partner set on any candidate date under the current certificates",
+        "does_not_guarantee": "a reproducible exact stack, the per-date optimum, or identical margins"
+      }
+    },
+    "S-D": {
+      "classification": "order_now",
+      "fixed_cross_date_stack": {
+        "attainable": true,
+        "stacks": [
+          [
+            "C",
+            "S-D"
+          ]
+        ],
+        "guarantee": "the exact same block set is certified on every candidate date and produces identical bounds; assembly may not substitute partners, so the guarantee is reproducible but narrow"
+      },
+      "late_assembly_locked_purchase": {
+        "attainable": true,
+        "feasible_dates": [
+          "D1",
+          "D2"
+        ],
+        "guarantee": "the ordered block is certified on every candidate date and at least one conforming partner set exists on each date; assembly is deferred until the date is confirmed, but the same partners, bounds and margin are not promised",
+        "does_not_guarantee": "a reproducible exact stack, the per-date optimum, or identical margins"
+      }
+    }
+  },
+  "same_backup_different_partners": [
+    {
+      "quote": "S-A",
+      "order_now_without_fixed_stack": true,
+      "partners_per_date": {
+        "D1": [
+          [
+            "C",
+            "D",
+            "S-A"
+          ]
+        ],
+        "D2": [
+          [
+            "C",
+            "F",
+            "S-A"
+          ]
+        ]
+      },
+      "distinct_partner_sets": 2,
+      "explanation": "the same ordered block pairs with different in-stock blocks on different dates; it can be ordered now because assembly is deferred, even though no single exact stack is guaranteed across dates"
+    },
+    {
+      "quote": "S-D",
+      "order_now_without_fixed_stack": false,
+      "partners_per_date": {
+        "D1": [
+          [
+            "C",
+            "S-D"
+          ]
+        ],
+        "D2": [
+          [
+            "C",
+            "S-D"
+          ]
+        ]
+      },
+      "distinct_partner_sets": 1,
+      "explanation": "a fixed exact stack also exists, so this quote is a stronger fixed-stack case"
+    }
+  ],
+  "variant_transition": {
+    "S-A": {
+      "before": "order_now",
+      "after": "wait_for_date",
+      "changed": true,
+      "before_dates": [
+        "D1",
+        "D2"
+      ],
+      "after_dates": [
+        "D2"
+      ]
+    },
+    "S-B": {
+      "before": "wait_for_date",
+      "after": "wait_for_date",
+      "changed": false,
+      "before_dates": [
+        "D1"
+      ],
+      "after_dates": [
+        "D1"
+      ]
+    },
+    "S-C": {
+      "before": "impossible_under_current_certificates",
+      "after": "impossible_under_current_certificates",
+      "changed": false,
+      "before_dates": [],
+      "after_dates": []
+    },
+    "S-D": {
+      "before": "order_now",
+      "after": "order_now",
+      "changed": false,
+      "before_dates": [
+        "D1",
+        "D2"
+      ],
+      "after_dates": [
+        "D1",
+        "D2"
+      ]
+    }
+  },
+  "self_check": {
+    "variant_block": "S-A",
+    "changed_fields": [
+      "from"
+    ],
+    "target_unchanged": true,
+    "dates_unchanged": true
+  },
+  "verification": {
+    "base_classification": {
+      "S-A": "order_now",
+      "S-B": "wait_for_date",
+      "S-C": "impossible_under_current_certificates",
+      "S-D": "order_now"
+    },
+    "variant_classification": {
+      "S-A": "wait_for_date",
+      "S-B": "wait_for_date",
+      "S-C": "impossible_under_current_certificates",
+      "S-D": "order_now"
+    },
+    "base_expected": {
+      "S-A": "order_now",
+      "S-B": "wait_for_date",
+      "S-C": "impossible_under_current_certificates",
+      "S-D": "order_now"
+    },
+    "variant_expected": {
+      "S-A": "wait_for_date",
+      "S-B": "wait_for_date",
+      "S-C": "impossible_under_current_certificates",
+      "S-D": "order_now"
+    },
+    "only_S-A_changed_class": [
+      "S-A"
+    ],
+    "S-A_base_partners_differ": true,
+    "S-A_fixed_stack_absent": true,
+    "S-D_fixed_stack_present": true,
+    "S-D_bounds_identical": true,
+    "variant_S-A_D1_unusable": true,
+    "variant_S-A_D2_still_usable": true,
+    "counterexamples_all_unresolved": true,
+    "splice_quotes_differ": true,
+    "splice_quotes": [
+      "S-B",
+      "S-D"
+    ],
+    "failures": [],
+    "ok": true
+  },
+  "repro_inputs": [
+    "analysis/out/inputs/base-S-A-D1-certificate-status.json",
+    "analysis/out/inputs/base-S-A-D1-stack-interval.json",
+    "analysis/out/inputs/base-S-A-D2-certificate-status.json",
+    "analysis/out/inputs/base-S-A-D2-stack-interval.json",
+    "analysis/out/inputs/base-S-B-D1-certificate-status.json",
+    "analysis/out/inputs/base-S-B-D1-stack-interval.json",
+    "analysis/out/inputs/base-S-B-D2-certificate-status.json",
+    "analysis/out/inputs/base-S-B-D2-stack-interval.json",
+    "analysis/out/inputs/base-S-C-D1-certificate-status.json",
+    "analysis/out/inputs/base-S-C-D1-stack-interval.json",
+    "analysis/out/inputs/base-S-C-D2-certificate-status.json",
+    "analysis/out/inputs/base-S-C-D2-stack-interval.json",
+    "analysis/out/inputs/base-S-D-D1-certificate-status.json",
+    "analysis/out/inputs/base-S-D-D1-stack-interval.json",
+    "analysis/out/inputs/base-S-D-D2-certificate-status.json",
+    "analysis/out/inputs/base-S-D-D2-stack-interval.json",
+    "analysis/out/inputs/variant-S-A-D1-certificate-status.json",
+    "analysis/out/inputs/variant-S-A-D1-stack-interval.json",
+    "analysis/out/inputs/variant-S-A-D2-certificate-status.json",
+    "analysis/out/inputs/variant-S-A-D2-stack-interval.json",
+    "analysis/out/inputs/variant-S-B-D1-certificate-status.json",
+    "analysis/out/inputs/variant-S-B-D1-stack-interval.json",
+    "analysis/out/inputs/variant-S-B-D2-certificate-status.json",
+    "analysis/out/inputs/variant-S-B-D2-stack-interval.json",
+    "analysis/out/inputs/variant-S-C-D1-certificate-status.json",
+    "analysis/out/inputs/variant-S-C-D1-stack-interval.json",
+    "analysis/out/inputs/variant-S-C-D2-certificate-status.json",
+    "analysis/out/inputs/variant-S-C-D2-stack-interval.json",
+    "analysis/out/inputs/variant-S-D-D1-certificate-status.json",
+    "analysis/out/inputs/variant-S-D-D1-stack-interval.json",
+    "analysis/out/inputs/variant-S-D-D2-certificate-status.json",
+    "analysis/out/inputs/variant-S-D-D2-stack-interval.json"
+  ]
+}

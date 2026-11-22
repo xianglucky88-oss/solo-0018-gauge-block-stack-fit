@@ -1,0 +1,105 @@
+{
+  "on": "2026-11-15",
+  "blocks": {
+    "C": {
+      "nominal_nm": 500000,
+      "certificates": [
+        {
+          "id": "c-c",
+          "from": "2026-01-01",
+          "until": "2027-12-31",
+          "correction_nm": 1,
+          "uncertainty_nm": 3
+        }
+      ]
+    },
+    "D": {
+      "nominal_nm": 300000,
+      "certificates": [
+        {
+          "id": "c-d",
+          "from": "2026-01-01",
+          "until": "2026-12-01",
+          "correction_nm": 0,
+          "uncertainty_nm": 1
+        }
+      ]
+    },
+    "F": {
+      "nominal_nm": 300000,
+      "certificates": [
+        {
+          "id": "c-f",
+          "from": "2026-12-01",
+          "until": "2027-12-31",
+          "correction_nm": -1,
+          "uncertainty_nm": 2
+        }
+      ]
+    },
+    "J": {
+      "nominal_nm": 600000,
+      "certificates": [
+        {
+          "id": "c-j",
+          "from": "2026-01-01",
+          "until": "2026-12-01",
+          "correction_nm": 0,
+          "uncertainty_nm": 1
+        }
+      ]
+    },
+    "H": {
+      "nominal_nm": 200000,
+      "certificates": [
+        {
+          "id": "c-h",
+          "from": "2026-01-01",
+          "until": "2026-11-01",
+          "correction_nm": 0,
+          "uncertainty_nm": 1
+        }
+      ]
+    },
+    "I": {
+      "nominal_nm": 200000,
+      "certificates": [
+        {
+          "id": "c-i1",
+          "from": "2026-01-01",
+          "until": "2027-12-31",
+          "correction_nm": 0,
+          "uncertainty_nm": 1
+        },
+        {
+          "id": "c-i2",
+          "from": "2026-06-01",
+          "until": "2027-06-01",
+          "correction_nm": 3,
+          "uncertainty_nm": 2
+        }
+      ]
+    },
+    "S-C": {
+      "nominal_nm": 200000,
+      "certificates": [
+        {
+          "id": "q-sc",
+          "from": "2026-10-01",
+          "until": "2028-01-01",
+          "correction_nm": 0,
+          "uncertainty_nm": 20
+        }
+      ]
+    }
+  },
+  "target_nm": 1000000,
+  "tolerance_nm": 12,
+  "max_blocks": 4,
+  "rank": "margin",
+  "stack": [
+    "C",
+    "D",
+    "S-C"
+  ]
+}

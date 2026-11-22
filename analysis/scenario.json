@@ -1,0 +1,84 @@
+{
+  "description": "虚拟工位单块备用块采购/计量对照。下单后不能换型号，到货时才确认投产日。全部对照保持报价型号、校正值、半径、目标与两个候选投产日不变。",
+  "target_nm": 1000000,
+  "tolerance_nm": 12,
+  "max_blocks": 4,
+  "rank": "margin",
+  "dates": {
+    "D1": "2026-11-15",
+    "D2": "2026-12-15"
+  },
+  "stock": {
+    "C": {
+      "nominal_nm": 500000,
+      "certificates": [
+        {"id": "c-c", "from": "2026-01-01", "until": "2027-12-31", "correction_nm": 1, "uncertainty_nm": 3}
+      ]
+    },
+    "D": {
+      "nominal_nm": 300000,
+      "certificates": [
+        {"id": "c-d", "from": "2026-01-01", "until": "2026-12-01", "correction_nm": 0, "uncertainty_nm": 1}
+      ]
+    },
+    "F": {
+      "nominal_nm": 300000,
+      "certificates": [
+        {"id": "c-f", "from": "2026-12-01", "until": "2027-12-31", "correction_nm": -1, "uncertainty_nm": 2}
+      ]
+    },
+    "J": {
+      "nominal_nm": 600000,
+      "certificates": [
+        {"id": "c-j", "from": "2026-01-01", "until": "2026-12-01", "correction_nm": 0, "uncertainty_nm": 1}
+      ]
+    },
+    "H": {
+      "nominal_nm": 200000,
+      "certificates": [
+        {"id": "c-h", "from": "2026-01-01", "until": "2026-11-01", "correction_nm": 0, "uncertainty_nm": 1}
+      ]
+    },
+    "I": {
+      "nominal_nm": 200000,
+      "certificates": [
+        {"id": "c-i1", "from": "2026-01-01", "until": "2027-12-31", "correction_nm": 0, "uncertainty_nm": 1},
+        {"id": "c-i2", "from": "2026-06-01", "until": "2027-06-01", "correction_nm": 3, "uncertainty_nm": 2}
+      ]
+    }
+  },
+  "quotes": {
+    "S-A": {
+      "nominal_nm": 200000,
+      "certificates": [
+        {"id": "q-sa", "from": "2026-10-01", "until": "2028-01-01", "correction_nm": 1, "uncertainty_nm": 2}
+      ]
+    },
+    "S-B": {
+      "nominal_nm": 400000,
+      "certificates": [
+        {"id": "q-sb", "from": "2026-10-01", "until": "2028-01-01", "correction_nm": 0, "uncertainty_nm": 1}
+      ]
+    },
+    "S-C": {
+      "nominal_nm": 200000,
+      "certificates": [
+        {"id": "q-sc", "from": "2026-10-01", "until": "2028-01-01", "correction_nm": 0, "uncertainty_nm": 20}
+      ]
+    },
+    "S-D": {
+      "nominal_nm": 500000,
+      "certificates": [
+        {"id": "q-sd", "from": "2026-10-01", "until": "2028-01-01", "correction_nm": 0, "uncertainty_nm": 2}
+      ]
+    }
+  },
+  "variant": {
+    "id": "S-A-certificate-start-2026-12-01",
+    "block": "S-A",
+    "certificate_index": 0,
+    "field": "from",
+    "value": "2026-12-01",
+    "only_change": "仅 S-A 证书生效日 2026-10-01 -> 2026-12-01；型号、校正值、半径、目标、两个投产日和在库证书全部不变。"
+  }
+}

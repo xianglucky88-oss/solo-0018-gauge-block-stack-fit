@@ -1,15 +1,10 @@
 {
-  "project_shape": "backend",
+  "project_shape": "fullstack",
   "modules": [
     {
       "id": "certificates",
       "path": "gauge/certificates.py",
       "responsibility": "Resolve usable correction and uncertainty for a synthetic gauge block."
-    },
-    {
-      "id": "example",
-      "path": "gauge/example.py",
-      "responsibility": "Send the bundled synthetic input to an ephemeral local HTTP service."
     },
     {
       "id": "fit",
@@ -27,14 +22,139 @@
       "responsibility": "Enumerate bounded combinations and rank only fully conforming stacks."
     },
     {
-      "id": "http_api",
-      "path": "gauge/http_api.py",
-      "responsibility": "Local JSON transport for 量块组合公差计算; only loopback is exposed."
+      "id": "wb_errors",
+      "path": "workbench/errors.py",
+      "responsibility": "API 业务错误及 HTTP 状态"
     },
     {
-      "id": "example",
-      "path": "gauge/example.py",
-      "responsibility": "Send the bundled synthetic input to an ephemeral local HTTP service."
+      "id": "wb_codec",
+      "path": "workbench/codec.py",
+      "responsibility": "JSON/标识校验、规范化与摘要"
+    },
+    {
+      "id": "wb_db",
+      "path": "workbench/db.py",
+      "responsibility": "SQLite 初始化、事务边界和产品隔离"
+    },
+    {
+      "id": "wb_catalog",
+      "path": "workbench/catalog.py",
+      "responsibility": "当前指针查询和版本归属"
+    },
+    {
+      "id": "wb_history",
+      "path": "workbench/history.py",
+      "responsibility": "导入单、版本及发布事件的只读历史"
+    },
+    {
+      "id": "wb_operations",
+      "path": "workbench/operations.py",
+      "responsibility": "加工注册与输入验证"
+    },
+    {
+      "id": "wb_intake",
+      "path": "workbench/intake.py",
+      "responsibility": "原料校验、去重及暂存单落库"
+    },
+    {
+      "id": "wb_publication",
+      "path": "workbench/publication.py",
+      "responsibility": "比较代次后发布或恢复指针"
+    },
+    {
+      "id": "wb_runs",
+      "path": "workbench/runs.py",
+      "responsibility": "批次固定版本、运行缓存和历史复算"
+    },
+    {
+      "id": "wb_comparison",
+      "path": "workbench/comparison.py",
+      "responsibility": "同数据集版本与加工产出对读"
+    },
+    {
+      "id": "wb_evidence",
+      "path": "workbench/evidence.py",
+      "responsibility": "原料和加工结果的完整性校验与导出"
+    },
+    {
+      "id": "wb_service",
+      "path": "workbench/service.py",
+      "responsibility": "API 与事务入口路由"
+    },
+    {
+      "id": "wb_assets",
+      "path": "workbench/assets.py",
+      "responsibility": "本机静态资源白名单"
+    },
+    {
+      "id": "wb_http",
+      "path": "workbench/http.py",
+      "responsibility": "本机 HTTP、请求体与响应边界"
+    },
+    {
+      "id": "wb___main__",
+      "path": "workbench/__main__.py",
+      "responsibility": "参数解析和服务启动"
+    },
+    {
+      "id": "wb_profile",
+      "path": "workbench/profile.py",
+      "responsibility": "领域操作名称、入口和样本绑定"
+    },
+    {
+      "id": "period_check",
+      "path": "gauge/period_check.py",
+      "responsibility": "跨日组合复验"
+    },
+    {
+      "id": "certificate_ledger",
+      "path": "gauge/certificate_ledger.py",
+      "responsibility": "固定组合证书账"
+    },
+    {
+      "id": "availability_windows",
+      "path": "gauge/availability_windows.py",
+      "responsibility": "证书有效期分段"
+    },
+    {
+      "id": "ui_index_html",
+      "path": "web/index.html",
+      "responsibility": "页面表单和语义结构"
+    },
+    {
+      "id": "ui_theme_css",
+      "path": "web/theme.css",
+      "responsibility": "样式和响应式排版"
+    },
+    {
+      "id": "ui_api_js",
+      "path": "web/api.js",
+      "responsibility": "请求和错误翻译"
+    },
+    {
+      "id": "ui_app_js",
+      "path": "web/app.js",
+      "responsibility": "数据集会话状态"
+    },
+    {
+      "id": "ui_intake_js",
+      "path": "web/intake.js",
+      "responsibility": "上传表单和暂存发布操作"
+    },
+    {
+      "id": "ui_revisions_js",
+      "path": "web/revisions.js",
+      "responsibility": "修订对比、发布历史和历史恢复"
+    },
+    {
+      "id": "ui_results_js",
+      "path": "web/results.js",
+      "responsibility": "运行表单、结果、复算与导出"
+    },
+    {
+      "id": "wb_schema",
+      "path": "workbench/schema.sql",
+      "responsibility": "版本归属、外键和运行唯一性约束"
     }
   ],
   "workflows": [
@@ -88,13 +208,208 @@
         "解析项目专用输入并验证前置条件",
         "按指定优先级推荐可重现的组合"
       ]
+    },
+    {
+      "id": "wb-stage",
+      "name": "校验原料并返回暂存单",
+      "entry": "POST /api/stage",
+      "success": "校验原料并返回暂存单",
+      "failure": "记录被拒绝原料",
+      "verification": "python3 -B examples/workbench_check.py",
+      "module_ids": [
+        "wb_intake",
+        "wb_operations",
+        "wb_catalog",
+        "wb_db"
+      ],
+      "steps": [
+        "从工作台或本机 HTTP 提交",
+        "校验原料并返回暂存单"
+      ]
+    },
+    {
+      "id": "wb-publish",
+      "name": "发布新修订并推进代次",
+      "entry": "POST /api/publish",
+      "success": "发布新修订并推进代次",
+      "failure": "拒绝过期暂存单",
+      "verification": "python3 -B examples/workbench_check.py",
+      "module_ids": [
+        "wb_publication",
+        "wb_catalog",
+        "wb_db"
+      ],
+      "steps": [
+        "从工作台或本机 HTTP 提交",
+        "发布新修订并推进代次"
+      ]
+    },
+    {
+      "id": "wb-history",
+      "name": "读取版本、发布事件和暂存单",
+      "entry": "POST /api/history",
+      "success": "读取版本、发布事件和暂存单",
+      "failure": "空数据集正常返回",
+      "verification": "python3 -B examples/workbench_check.py",
+      "module_ids": [
+        "wb_history",
+        "wb_catalog",
+        "wb_db"
+      ],
+      "steps": [
+        "从工作台或本机 HTTP 提交",
+        "读取版本、发布事件和暂存单"
+      ]
+    },
+    {
+      "id": "wb-restore",
+      "name": "恢复历史版本，不修改原料",
+      "entry": "POST /api/restore",
+      "success": "恢复历史版本，不修改原料",
+      "failure": "拒绝过期或跨数据集版本",
+      "verification": "python3 -B examples/workbench_check.py",
+      "module_ids": [
+        "wb_publication",
+        "wb_catalog",
+        "wb_db"
+      ],
+      "steps": [
+        "从工作台或本机 HTTP 提交",
+        "恢复历史版本，不修改原料"
+      ]
+    },
+    {
+      "id": "wb-batch",
+      "name": "同批固定版本并产生各加工结果",
+      "entry": "POST /api/run",
+      "success": "同批固定版本并产生各加工结果",
+      "failure": "单项失败不留下部分结果",
+      "verification": "python3 -B examples/workbench_check.py",
+      "module_ids": [
+        "wb_runs",
+        "wb_operations",
+        "wb_catalog",
+        "wb_db"
+      ],
+      "steps": [
+        "从工作台或本机 HTTP 提交",
+        "同批固定版本并产生各加工结果"
+      ]
+    },
+    {
+      "id": "wb-replay",
+      "name": "按固定引擎标签和修订复算",
+      "entry": "POST /api/replay",
+      "success": "按固定引擎标签和修订复算",
+      "failure": "引擎不可用时明确拒绝",
+      "verification": "python3 -B examples/workbench_check.py",
+      "module_ids": [
+        "wb_runs",
+        "wb_catalog",
+        "wb_operations"
+      ],
+      "steps": [
+        "从工作台或本机 HTTP 提交",
+        "按固定引擎标签和修订复算"
+      ]
+    },
+    {
+      "id": "wb-compare",
+      "name": "区分输入变化和产出变化",
+      "entry": "POST /api/compare",
+      "success": "区分输入变化和产出变化",
+      "failure": "拒绝跨数据集对比",
+      "verification": "python3 -B examples/workbench_check.py",
+      "module_ids": [
+        "wb_comparison",
+        "wb_catalog",
+        "wb_operations"
+      ],
+      "steps": [
+        "从工作台或本机 HTTP 提交",
+        "区分输入变化和产出变化"
+      ]
+    },
+    {
+      "id": "wb-export",
+      "name": "校验摘要后导出原料与结果",
+      "entry": "GET /api/evidence/{run}",
+      "success": "校验摘要后导出原料与结果",
+      "failure": "证据校验错时拒绝导出",
+      "verification": "python3 -B examples/workbench_check.py",
+      "module_ids": [
+        "wb_evidence",
+        "wb_runs",
+        "wb_catalog",
+        "wb_codec"
+      ],
+      "steps": [
+        "从工作台或本机 HTTP 提交",
+        "校验摘要后导出原料与结果"
+      ]
+    },
+    {
+      "id": "wb-period-check",
+      "entry": "POST /api/run (period-check)",
+      "name": "跨日组合复验",
+      "success": "按固定原料版本输出跨日组合复验",
+      "failure": "原料不合法时不生成成品",
+      "verification": "python3 -B examples/workbench_check.py period-check",
+      "module_ids": [
+        "wb_runs",
+        "wb_operations",
+        "period_check"
+      ],
+      "steps": [
+        "固定输入修订",
+        "跨日组合复验"
+      ]
+    },
+    {
+      "id": "wb-certificate-ledger",
+      "entry": "POST /api/run (certificate-ledger)",
+      "name": "固定组合证书账",
+      "success": "按固定原料版本输出固定组合证书账",
+      "failure": "原料不合法时不生成成品",
+      "verification": "python3 -B examples/workbench_check.py certificate-ledger",
+      "module_ids": [
+        "wb_runs",
+        "wb_operations",
+        "certificate_ledger"
+      ],
+      "steps": [
+        "固定输入修订",
+        "固定组合证书账"
+      ]
+    },
+    {
+      "id": "wb-availability-windows",
+      "entry": "POST /api/run (availability-windows)",
+      "name": "证书有效期分段",
+      "success": "按固定原料版本输出证书有效期分段",
+      "failure": "原料不合法时不生成成品",
+      "verification": "python3 -B examples/workbench_check.py availability-windows",
+      "module_ids": [
+        "wb_runs",
+        "wb_operations",
+        "availability_windows"
+      ],
+      "steps": [
+        "固定输入修订",
+        "证书有效期分段"
+      ]
     }
   ],
   "complexity": {
     "mechanisms": [
       "长度为整数纳米。证书有效区间左闭右开，多张同时有效时量块不可用；不以名义值代替缺失证书。",
       "将绝对不确定半径相加，不假设独立误差。只部分相交不合规。",
-      "搜索每块最多一次，最多 4 块；既支持最少块数优先也支持最大边缘裕量优先；完全并列按稳定标识顺序。"
+      "搜索每块最多一次，最多 4 块；既支持最少块数优先也支持最大边缘裕量优先；完全并列按稳定标识顺序。",
+      "按发布代次进行事务更新",
+      "保留原始输入与规范化版本",
+      "原子批加工",
+      "固定修订复算",
+      "导出前校验证据摘要"
     ]
   }
 }

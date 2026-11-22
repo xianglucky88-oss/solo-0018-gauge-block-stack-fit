@@ -1,10 +1,14 @@
 {
-  "language": "Python 3.11+ (stdlib)",
-  "project_shape": "backend",
+  "language": "Python 3.11+ (stdlib), SQLite, HTML/CSS and native JavaScript ES modules",
+  "project_shape": "fullstack",
   "source_extensions": [
-    ".py"
+    ".py",
+    ".js",
+    ".css",
+    ".html",
+    ".sql"
   ],
-  "build_command": "python3 -B -c \"from pathlib import Path; [compile(p.read_bytes(), str(p), 'exec') for p in Path('gauge').glob('*.py')]\"",
+  "build_command": "python3 -B -c \"from pathlib import Path; [compile(p.read_bytes(),str(p),'exec') for p in Path('.').glob('*/*.py')]\"",
   "testing": "deferred",
   "workflow_checks": [
     {
@@ -18,6 +22,50 @@
     {
       "workflow_id": "conforming-stacks",
       "command": "python3 -B -m gauge.example /stackfit/conforming-stacks"
+    },
+    {
+      "workflow_id": "wb-stage",
+      "command": "python3 -B examples/workbench_check.py"
+    },
+    {
+      "workflow_id": "wb-publish",
+      "command": "python3 -B examples/workbench_check.py"
+    },
+    {
+      "workflow_id": "wb-history",
+      "command": "python3 -B examples/workbench_check.py"
+    },
+    {
+      "workflow_id": "wb-restore",
+      "command": "python3 -B examples/workbench_check.py"
+    },
+    {
+      "workflow_id": "wb-batch",
+      "command": "python3 -B examples/workbench_check.py"
+    },
+    {
+      "workflow_id": "wb-replay",
+      "command": "python3 -B examples/workbench_check.py"
+    },
+    {
+      "workflow_id": "wb-compare",
+      "command": "python3 -B examples/workbench_check.py"
+    },
+    {
+      "workflow_id": "wb-export",
+      "command": "python3 -B examples/workbench_check.py"
+    },
+    {
+      "workflow_id": "wb-period-check",
+      "command": "python3 -B examples/workbench_check.py period-check"
+    },
+    {
+      "workflow_id": "wb-certificate-ledger",
+      "command": "python3 -B examples/workbench_check.py certificate-ledger"
+    },
+    {
+      "workflow_id": "wb-availability-windows",
+      "command": "python3 -B examples/workbench_check.py availability-windows"
     }
   ]
 }

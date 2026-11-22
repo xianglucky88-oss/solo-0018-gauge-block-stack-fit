@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>数据工作台</title>
+  <link rel="stylesheet" href="/assets/theme.css">
+  <script type="module" src="/assets/app.js"></script>
+</head>
+<body>
+  <header class="top"><div><span id="work-label">数据工作台</span><h1 id="title">数据工作台</h1></div><nav aria-label="操作区"><a href="#import">导入</a><a href="#history">版本</a><a href="#processing">加工</a></nav></header>
+  <main>
+    <form id="dataset-form" class="bar"><label>数据集 <input id="dataset" name="dataset" maxlength="64" pattern="[A-Za-z0-9][A-Za-z0-9._\-]*" required></label><button>载入</button><span id="head" role="status">未载入</span></form>
+    <p id="status" role="status" aria-live="polite"></p>
+    <div class="work">
+      <section id="import"><h2>导入原料</h2>
+        <form id="intake-form"><label>文件 <input id="upload" type="file" accept=".json,application/json"></label><button type="button" id="sample">载入样例</button>
+          <label>来源文件名 <input id="source" maxlength="120" required></label><label>原始 JSON <textarea id="input" rows="8" required spellcheck="false"></textarea></label><button class="primary">校验并暂存</button>
+        </form>
+        <p id="draft-note"></p>
+        <ul id="drafts" class="records"></ul>
+      </section>
+      <section id="processing"><h2>加工与复验</h2>
+        <form id="run-form"><label>输入版本 <select id="run-revision"></select></label><fieldset><legend>加工项目</legend><div id="operations" class="options"></div></fieldset><button class="primary">运行所选项目</button></form>
+        <div id="runs" class="runs"></div>
+      </section>
+      <section id="history"><h2>发布与版本对比</h2>
+        <ul id="events" class="records"></ul>
+        <form id="compare-form"><div class="pairs"><label>旧版本 <select id="before" required></select></label><label>新版本 <select id="after" required></select></label></div><label>对比项目 <select id="compare-operation"></select></label><button>对比产出</button></form>
+        <div id="comparison"></div>
+      </section>
+    </div>
+  </main>
+</body>
+</html>

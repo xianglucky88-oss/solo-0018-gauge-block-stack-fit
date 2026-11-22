@@ -18,6 +18,18 @@
     {
       "workflow_id": "conforming-stacks",
       "command": "python3 -B -m gauge.example /stackfit/conforming-stacks"
+    },
+    {
+      "workflow_id": "conforming-stacks",
+      "command": "python3 -B -m gauge.example /stackfit/conforming-stacks --input examples/fixture-in-place.json"
+    },
+    {
+      "workflow_id": "conforming-stacks",
+      "command": "python3 -B -m gauge.example /stackfit/conforming-stacks --input examples/fixture-stoppage-clamp.json"
+    },
+    {
+      "workflow_id": "conforming-stacks",
+      "command": "python3 -B -m gauge.example /stackfit/conforming-stacks --input examples/fixture-stoppage-cert.json"
     }
   ]
 }

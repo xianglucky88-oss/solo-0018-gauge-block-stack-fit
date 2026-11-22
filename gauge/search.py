@@ -2,6 +2,7 @@
 from itertools import combinations
 from .certificates import number,resolve
 from .fit import describe,target
+from .reconfigure import plan as fixture_plan
 
 
 def available(doc):
@@ -16,6 +17,11 @@ def recommend(doc):
     policy=doc.get('rank','block_count')
     if policy not in ('block_count','margin'):
         raise ValueError('rank_policy')
+    if 'fixture' in doc:
+        # Locked blocks, mounted blocks, stoppage-only spares and the maximum
+        # number of remove/add operations split the answer into an in-place
+        # document and a free after-stoppage rebuild document.
+        return fixture_plan(doc,good,bad,max_blocks,policy)
     best,count=None,0
     for size in range(1,max_blocks+1):
         for refs in combinations(sorted(good),size):

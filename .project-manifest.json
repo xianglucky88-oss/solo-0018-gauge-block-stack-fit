@@ -22,6 +22,11 @@
       "responsibility": "Local JSON transport for 量块组合公差计算; only loopback is exposed."
     },
     {
+      "id": "reconfigure",
+      "path": "gauge/reconfigure.py",
+      "responsibility": "Split fixture-constrained requests into in-place reconfiguration and after-stoppage rebuild plans."
+    },
+    {
       "id": "search",
       "path": "gauge/search.py",
       "responsibility": "Enumerate bounded combinations and rank only fully conforming stacks."
@@ -76,12 +81,13 @@
       "id": "conforming-stacks",
       "name": "合规组合搜索",
       "entry": "POST /stackfit/conforming-stacks",
-      "success": "按指定优先级推荐可重现的组合",
-      "failure": "只有部分相交的组合不进入可行集",
+      "success": "按指定优先级推荐可重现的组合；带装夹约束时同时给在位改配与停台重组两份单据",
+      "failure": "只有部分相交的组合不进入可行集；锁定块不得被静默拆除",
       "verification": "python3 -B -m gauge.example /stackfit/conforming-stacks",
       "module_ids": [
         "certificates",
         "fit",
+        "reconfigure",
         "search"
       ],
       "steps": [

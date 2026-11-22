@@ -1,0 +1,95 @@
+{
+  "on": "2026-11-22",
+  "blocks": {
+    "L": {
+      "nominal_nm": 500000,
+      "certificates": [
+        {
+          "id": "c-l",
+          "from": "2026-01-01",
+          "until": "2027-01-01",
+          "correction_nm": 0,
+          "uncertainty_nm": 5
+        }
+      ]
+    },
+    "R1": {
+      "nominal_nm": 500000,
+      "certificates": [
+        {
+          "id": "c-r1",
+          "from": "2026-01-01",
+          "until": "2027-01-01",
+          "correction_nm": 0,
+          "uncertainty_nm": 6
+        }
+      ]
+    },
+    "R2": {
+      "nominal_nm": 400000,
+      "certificates": [
+        {
+          "id": "c-r2",
+          "from": "2026-01-01",
+          "until": "2027-01-01",
+          "correction_nm": 0,
+          "uncertainty_nm": 3
+        }
+      ]
+    },
+    "R3": {
+      "nominal_nm": 100000,
+      "certificates": [
+        {
+          "id": "c-r3",
+          "from": "2026-01-01",
+          "until": "2027-01-01",
+          "correction_nm": 0,
+          "uncertainty_nm": 1
+        }
+      ]
+    },
+    "S1": {
+      "nominal_nm": 1000000,
+      "certificates": [
+        {
+          "id": "c-s1",
+          "from": "2026-01-01",
+          "until": "2027-01-01",
+          "correction_nm": 0,
+          "uncertainty_nm": 3
+        }
+      ]
+    },
+    "E": {
+      "nominal_nm": 1000000,
+      "certificates": [
+        {
+          "id": "c-e",
+          "from": "2026-01-01",
+          "until": "2027-01-01",
+          "correction_nm": 0,
+          "uncertainty_nm": 1
+        }
+      ]
+    }
+  },
+  "target_nm": 1000000,
+  "tolerance_nm": 10,
+  "max_blocks": 3,
+  "rank": "margin",
+  "fixture": {
+    "locked": [
+      "L"
+    ],
+    "mounted": [
+      "L",
+      "R1"
+    ],
+    "stoppage_only": [
+      "S1",
+      "E"
+    ],
+    "max_changes": 1
+  }
+}

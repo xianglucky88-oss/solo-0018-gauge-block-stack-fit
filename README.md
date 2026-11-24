@@ -20,7 +20,11 @@ python3 -B -m workbench
 
 ### 换证差值与复测核对
 
-在工作台运行 `certificate-drift`。对固定组块分别查两日的独立实测与证书，将可解释换证差额和未解释残差分开报告。演练：`python3 -B examples/workbench_check.py certificate-drift`。
+在工作台运行 `certificate-drift`。对固定组块分别查两日的独立实测与证书，将可解释换证差额和未解释残差分开报告。演练：`python3 -B examples/workbench_check.py certificate-drift`
+
+### 补测预约按轮安排
+
+在工作台运行 `witness-plan`。对证书区间跨过交付公差的已选组合，在下单前给出按轮可约的绝对/差长见证安排：何时一张票即可定论、何时必须等下一轮，并在票实际收到后用属于本次预约的见证判定原组合能否交付；同一实体量块始终是同一个未知长度。演练：`python3 -B examples/witness_plan_case.py`。
 
 ### 成品复核与交接
 

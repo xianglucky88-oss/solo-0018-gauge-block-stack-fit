@@ -8,6 +8,7 @@ from gauge.witness import inspect as witness
 from gauge.stack_delta import compare as stack_delta
 from gauge.change_chain import check as change_chain
 from gauge.certificate_drift import reconcile as certificate_drift
+from gauge.witness_plan import plan as witness_plan
 
 PRODUCT = '0018-gauge-block-stack-fit'
 TITLE = '量块组合公差工作台'
@@ -27,6 +28,7 @@ OPERATIONS = {
     'stack-delta': ('同日组块差值', stack_delta),
     'change-chain': ('同日换型链核验', change_chain),
     'certificate-drift': ('换证差值与复测核对', certificate_drift),
+    'witness-plan': ('补测预约安排', witness_plan),
 }
 def _review_eligible(report):
     return report['accepted']

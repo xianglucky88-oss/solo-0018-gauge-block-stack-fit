@@ -60,3 +60,11 @@ SQLite v1→v2 只新增复核单与凭据结构；迁移不改写旧行、运�
 `POST /api/run (certificate-drift)`。`certificate_drift.dates` 为递增的两日，各需 `witness_readings` 中的独立实测。同一实体同张证书的证书模型项在相减时抵消，换证后两票保守取界；这不代表实物不会漂移。本项是诊断报告，不替代任一日期的组块合规判定。
 
 演练：`python3 -B examples/workbench_check.py certificate-drift`。新原料不是旧导入的必填项；未提交时只影响本加工。
+
+## 补测预约按轮安排
+
+`POST /api/run (witness-plan)`，输入 `witness_plan`：`reference_stack` 为有证参考组合，`devices` 给出每台设备的票种（`absolute` 指向 `subject`/`reference`，或 `differential`）、量程、误差半径、费用、最晚轮次，另有 `budget_fee`、`max_rounds` 与按轮序连续的 `received` 实收票。预约与实收分离：下单前只给可实际预约的轮次安排，票未收到前不进入约束。
+
+每个实体量块是同一个未知长度变量，共用块在差长约束中代数抵消，不允许各按独立极值。约束系统为整数系数区间系统，以 Fourier-Motzkin 投影精确求解待检偏差、参考偏差和差长的可行边缘。实收票与既有约束矛盾时返回 `witness_conflict`，不丢弃任何一张已收有效票；仍可收票但无法定论时保持 `undetermined`，轮次或预算耗尽且无可约设备时明示。策略比较给出「直接绝对票」与「先差长、必要时补约」的首轮费用、最坏总费用和最坏出结论轮次，补约不得超过剩余预算与轮次。既有固定证书检查与单日绝对见证不变，本项为可选原料，缺失时返回 `no_commission`，不影响旧入口。
+
+演练：`python3 -B examples/witness_plan_case.py`。
